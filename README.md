@@ -1,22 +1,14 @@
-# Systemic Constellations — bilingual one-pager
+# Ela Stoika — Systemic Constellations 1:1
 
-A single-file static website in Romanian and English, ready for GitHub Pages or any static host.
+Static bilingual one-page site, ready for GitHub Pages or any static hosting.
 
-## Publish on GitHub Pages
-1. Create a new public repository.
-2. Upload `index.html` to the repository root.
-3. In **Settings → Pages**, choose **Deploy from a branch** and select `main` / root.
-4. GitHub will publish the page at your GitHub Pages URL.
+## Files
+- `index.html` — complete RO/EN landing page
+- `hero-constellations.png` — hero image
 
-## Before publishing
-Search `index.html` for these items and replace them:
-- `YOUR-EMAIL@EXAMPLE.COM` — the facilitator/client booking or contact email.
-- `FACILITATOR` portrait placeholder — replace the `.portrait` block with the client/facilitator photograph if desired.
-- `TEXT DEMO` / `DEMO COPY` — replace the three sample testimonial texts with verified client testimonials.
-- Facilitator section — replace all placeholders with the client’s confirmed name, bio, systemic-constellations training, experience, languages and preferred session format.
+## Booking
+All main booking buttons point to:
+https://calendly.com/e-stoika/constellation
 
-## Language
-The RO/EN selector is built in. The visitor's last selected language is saved locally in the browser.
-
-## Responsible positioning
-The page describes systemic constellations as an experiential reflective method, and explicitly avoids presenting it as diagnosis, prediction, medical treatment or a replacement for clinical care.
+## Before public launch
+Add Ela's real portrait if desired and replace/add testimonials only when genuine client testimonials are available.

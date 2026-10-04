@@ -3,171 +3,231 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Constelații sistemice — o experiență de explorare a dinamicilor relaționale, personale și profesionale." />
-  <title>Constelații Sistemice | Systemic Constellations</title>
+  <meta name="description" content="Constelații sistemice individuale 1:1 cu Ela Stoika — lucrăm pe obiectiv, nu pe ceas. Sesiuni private, până la 3 ore." />
+  <title>Ela Stoika | Constelații Sistemice 1:1</title>
   <style>
     :root {
-      --ink: #24312c;
-      --muted: #65726b;
-      --paper: #f6f2e9;
-      --paper-2: #ece6da;
-      --white: #fffdf8;
-      --line: rgba(36,49,44,.15);
-      --accent: #a0573e;
-      --accent-2: #46675b;
-      --shadow: 0 18px 55px rgba(36,49,44,.10);
-      --radius: 24px;
-      --max: 1160px;
+      --ink:#22312d; --muted:#66746f; --paper:#f5f0e7; --white:#fffdf8;
+      --line:rgba(34,49,45,.14); --accent:#a55b3f; --accent2:#45695d;
+      --shadow:0 20px 60px rgba(34,49,45,.11); --radius:26px; --max:1180px;
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--ink);
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;color:var(--ink);
       background:
-        radial-gradient(circle at 10% 8%, rgba(160,87,62,.09), transparent 27rem),
-        radial-gradient(circle at 88% 20%, rgba(70,103,91,.10), transparent 30rem),
+        radial-gradient(circle at 8% 8%,rgba(165,91,63,.08),transparent 28rem),
+        radial-gradient(circle at 92% 18%,rgba(69,105,93,.09),transparent 32rem),
         var(--paper);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.6;
     }
-    a { color: inherit; }
-    .serif { font-family: Georgia, "Times New Roman", serif; }
-    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-    nav {
-      position: sticky; top: 0; z-index: 50;
-      backdrop-filter: blur(14px);
-      background: rgba(246,242,233,.82);
-      border-bottom: 1px solid var(--line);
+    a{color:inherit}
+    .serif{font-family:Georgia,"Times New Roman",serif}
+    .wrap{width:min(calc(100% - 40px),var(--max));margin:0 auto}
+    .muted{color:var(--muted)}
+    nav{
+      position:sticky;top:0;z-index:50;backdrop-filter:blur(16px);
+      background:rgba(245,240,231,.84);border-bottom:1px solid var(--line)
     }
-    .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: -.02em; }
-    .mark { width: 31px; height: 31px; border: 1.5px solid var(--accent-2); border-radius: 50%; position: relative; }
-    .mark:before,.mark:after { content: ""; position: absolute; border-radius: 50%; border: 1px solid var(--accent); }
-    .mark:before { width: 13px; height: 13px; left: 15px; top: -4px; }
-    .mark:after { width: 8px; height: 8px; left: -4px; bottom: 2px; }
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: rgba(255,255,255,.45); }
-    .lang button { border: 0; background: transparent; color: var(--muted); padding: 7px 10px; border-radius: 999px; cursor: pointer; font-weight: 700; }
-    .lang button.active { background: var(--ink); color: var(--white); }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; border-radius: 999px; padding: 12px 18px; font-weight: 750; border: 1px solid var(--ink); transition: .2s ease; }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(36,49,44,.12); }
-    .btn.dark { color: var(--white); background: var(--ink); }
-    .btn.light { background: transparent; }
-    header { padding: 86px 0 62px; min-height: 72vh; display: flex; align-items: center; }
-    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: center; }
-    .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .76rem; font-weight: 800; color: var(--accent); margin-bottom: 18px; }
-    h1 { font-size: clamp(3.15rem, 7vw, 6.7rem); line-height: .92; letter-spacing: -.055em; margin: 0 0 26px; font-weight: 520; }
-    .lead { font-size: clamp(1.1rem, 1.7vw, 1.35rem); color: var(--muted); max-width: 720px; margin-bottom: 30px; }
-    .hero-actions { display:flex; gap: 12px; flex-wrap: wrap; }
-    .field { aspect-ratio: 1/1; position: relative; border-radius: 50%; border: 1px solid rgba(36,49,44,.20); max-width: 470px; justify-self: end; }
-    .field:before,.field:after { content:""; position:absolute; border-radius:50%; border:1px solid rgba(36,49,44,.14); }
-    .field:before { inset: 13%; }
-    .field:after { inset: 29%; }
-    .node { position:absolute; width: 18px; height: 18px; background: var(--accent); border-radius:50%; box-shadow: 0 0 0 7px rgba(160,87,62,.10); }
-    .node:nth-child(1) { top:12%; left:45%; }
-    .node:nth-child(2) { top:34%; right:6%; background:var(--accent-2); box-shadow:0 0 0 7px rgba(70,103,91,.10); }
-    .node:nth-child(3) { bottom:14%; right:26%; }
-    .node:nth-child(4) { bottom:21%; left:13%; background:var(--accent-2); box-shadow:0 0 0 7px rgba(70,103,91,.10); }
-    .node:nth-child(5) { top:27%; left:20%; }
-    .field-note { position:absolute; inset: 39% 17% auto; text-align:center; font-size:.92rem; color:var(--muted); }
-    section { padding: 84px 0; }
-    .section-label { color: var(--accent); text-transform: uppercase; letter-spacing: .13em; font-size: .74rem; font-weight: 800; margin-bottom: 14px; }
-    h2 { font-size: clamp(2.2rem, 4.5vw, 4.1rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 520; margin: 0 0 24px; }
-    h3 { font-size: 1.18rem; margin: 0 0 8px; }
-    .intro-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:70px; }
-    .big-copy { font-size: clamp(1.35rem,2.1vw,1.9rem); line-height:1.42; letter-spacing:-.02em; }
-    .muted { color:var(--muted); }
-    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:34px; }
-    .card { background: rgba(255,253,248,.68); border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); }
-    .num { font-family: Georgia, serif; font-size:2.25rem; color:var(--accent); margin-bottom:22px; }
-    .split { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
-    .panel { padding: 34px; border-radius: var(--radius); border:1px solid var(--line); }
-    .panel.yes { background:rgba(70,103,91,.08); }
-    .panel.no { background:rgba(160,87,62,.07); }
-    ul.clean { list-style:none; padding:0; margin:22px 0 0; }
-    ul.clean li { position:relative; padding-left:28px; margin:14px 0; }
-    ul.clean li:before { content:"•"; position:absolute; left:7px; color:var(--accent); font-size:1.25rem; }
-    .process { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset: steps; margin-top:34px; }
-    .step { border-top:1px solid var(--line); padding-top:20px; }
-    .step:before { counter-increment:steps; content:"0" counter(steps); display:block; color:var(--accent); font-weight:800; font-size:.78rem; letter-spacing:.1em; margin-bottom:28px; }
-    .quote-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-    blockquote { margin:0; }
-    .quote { min-height:235px; display:flex; flex-direction:column; justify-content:space-between; }
-    .quote p { font-family:Georgia,serif; font-size:1.25rem; line-height:1.45; margin:0 0 26px; }
-    .quote small { color:var(--muted); }
-    .demo-note { margin-top:14px; font-size:.78rem; color:var(--accent); font-weight:750; }
-    .profile { display:grid; grid-template-columns:.72fr 1.28fr; gap:60px; align-items:center; }
-    .portrait { aspect-ratio:4/5; border-radius: 180px 180px 24px 24px; border:1px solid var(--line); background:
-      radial-gradient(circle at 50% 34%, rgba(160,87,62,.19), transparent 17%),
-      radial-gradient(circle at 51% 74%, rgba(70,103,91,.19), transparent 28%),
-      linear-gradient(150deg, rgba(255,255,255,.7), rgba(236,230,218,.65));
-      position:relative; overflow:hidden;
+    .nav-inner{height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:780;letter-spacing:-.02em}
+    .mark{width:31px;height:31px;border:1.5px solid var(--accent2);border-radius:50%;position:relative}
+    .mark:before,.mark:after{content:"";position:absolute;border-radius:50%;border:1px solid var(--accent)}
+    .mark:before{width:13px;height:13px;left:15px;top:-4px}
+    .mark:after{width:8px;height:8px;left:-4px;bottom:2px}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:rgba(255,255,255,.48)}
+    .lang button{border:0;background:transparent;color:var(--muted);padding:7px 10px;border-radius:999px;cursor:pointer;font-weight:750}
+    .lang button.active{background:var(--ink);color:var(--white)}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;
+      border-radius:999px;padding:13px 19px;font-weight:780;border:1px solid var(--ink);
+      transition:.2s ease;cursor:pointer
     }
-    .portrait:after { content:"FACILITATOR"; position:absolute; bottom:26px; left:0; right:0; text-align:center; letter-spacing:.18em; font-size:.7rem; color:var(--muted); }
-    .chips { display:flex; flex-wrap:wrap; gap:9px; margin:25px 0; }
-    .chip { padding:8px 12px; border:1px solid var(--line); border-radius:999px; font-size:.88rem; background:rgba(255,255,255,.35); }
-    .cta { border-radius:32px; padding:55px; background:var(--ink); color:var(--white); display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:40px; }
-    .cta h2 { color:var(--white); margin-bottom:10px; }
-    .cta p { color:rgba(255,253,248,.72); margin:0; }
-    .cta .btn { background:var(--white); color:var(--ink); border-color:var(--white); justify-self:end; }
-    footer { padding:40px 0 58px; color:var(--muted); font-size:.88rem; }
-    .footer-grid { display:flex; justify-content:space-between; gap:30px; align-items:flex-start; border-top:1px solid var(--line); padding-top:28px; }
-    .disclaimer { max-width:760px; }
-    .refs { margin-top:14px; font-size:.78rem; }
-    .refs a { color:var(--muted); }
-    @media (max-width:900px){
-      .hero,.intro-grid,.profile,.cta { grid-template-columns:1fr; }
-      .field { justify-self:center; max-width:360px; width:88%; order:-1; }
-      .cards,.quote-grid { grid-template-columns:1fr; }
-      .process { grid-template-columns:1fr 1fr; }
-      .cta .btn { justify-self:start; }
-      .nav-actions>.btn { display:none; }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 9px 24px rgba(34,49,45,.13)}
+    .btn.dark{color:var(--white);background:var(--ink)}
+    .btn.light{background:rgba(255,255,255,.3)}
+
+    header{padding:42px 0 72px}
+    .launch-strip{
+      margin-bottom:22px;padding:12px 16px;border-radius:18px;
+      border:1px solid rgba(165,91,63,.18);background:rgba(255,253,248,.65);
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      font-size:.94rem;color:var(--muted);text-align:center
     }
-    @media (max-width:620px){
-      .wrap { width:min(calc(100% - 26px), var(--max)); }
-      header { padding-top:48px; }
-      section { padding:60px 0; }
-      .split,.process { grid-template-columns:1fr; }
-      h1 { font-size:3.25rem; }
-      .cta { padding:34px 24px; }
-      .footer-grid { flex-direction:column; }
+    .launch-strip strong{color:var(--ink)}
+    .hero{display:grid;grid-template-columns:minmax(0,.94fr) minmax(460px,1.16fr);gap:54px;align-items:center}
+    .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:830;color:var(--accent);margin-bottom:17px}
+    h1{font-size:clamp(3.05rem,5.65vw,5.35rem);line-height:.99;letter-spacing:-.052em;margin:0 0 24px;font-weight:520}
+    .lead{font-size:clamp(1.05rem,1.45vw,1.25rem);color:var(--muted);max-width:700px;margin:0 0 23px}
+    .big-copy{font-size:clamp(1.35rem,2vw,1.85rem);line-height:1.43;letter-spacing:-.02em}
+    .trust-row{display:flex;gap:9px;flex-wrap:wrap;margin:0 0 24px}
+    .trust-pill{border:1px solid var(--line);padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.4);font-size:.9rem;font-weight:720}
+    .offer-line{
+      display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:0 0 27px;
+      padding:15px 17px;border-left:3px solid var(--accent);background:rgba(255,253,248,.55)
+    }
+    .offer-line strong{font-size:1.04rem}
+    .offer-line span{font-size:.9rem;color:var(--muted)}
+    .hero-actions{display:flex;gap:11px;flex-wrap:wrap}
+    .hero-visual{
+      position:relative;min-height:630px;border-radius:36px;overflow:hidden;
+      box-shadow:var(--shadow);border:1px solid rgba(34,49,45,.09);background:#cdb99e
+    }
+    .hero-visual img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,45,40,.01),rgba(28,45,40,.16));pointer-events:none}
+    .hero-note{
+      position:absolute;left:24px;bottom:24px;z-index:2;max-width:280px;padding:15px 17px;
+      border-radius:19px;background:rgba(255,253,248,.86);backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.75);box-shadow:0 16px 36px rgba(34,49,45,.13);
+      font-size:.96rem;line-height:1.42
+    }
+
+    section{padding:84px 0}
+    .section-label{color:var(--accent);text-transform:uppercase;letter-spacing:.13em;font-size:.74rem;font-weight:830;margin-bottom:13px}
+    h2{font-size:clamp(2.25rem,4.2vw,4rem);line-height:1.04;letter-spacing:-.038em;font-weight:520;margin:0 0 24px}
+    h3{font-size:1.18rem;margin:0 0 8px}
+    .recognition{background:rgba(255,253,248,.44);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+    .recognition-head{max-width:780px;margin-bottom:35px}
+    .recognition-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .recognition-card{padding:25px;border:1px solid var(--line);border-radius:var(--radius);background:rgba(255,253,248,.72);box-shadow:0 12px 34px rgba(34,49,45,.05)}
+    .recognition-card .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);margin-bottom:18px}
+    .recognition-card p{margin:0;font-size:1.05rem;line-height:1.5}
+    .recognition-close{margin:29px 0 0;font-size:1.1rem;color:var(--accent2);font-weight:760}
+    .intro-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:70px}
+    .process{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;counter-reset:steps;margin-top:34px}
+    .step{border-top:1px solid var(--line);padding-top:20px}
+    .step:before{counter-increment:steps;content:"0" counter(steps);display:block;color:var(--accent);font-weight:820;font-size:.78rem;letter-spacing:.1em;margin-bottom:28px}
+    .split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+    .panel{padding:34px;border-radius:var(--radius);border:1px solid var(--line)}
+    .panel.yes{background:rgba(69,105,93,.08)}
+    .panel.no{background:rgba(165,91,63,.06)}
+    ul.clean{list-style:none;padding:0;margin:22px 0 0}
+    ul.clean li{position:relative;padding-left:28px;margin:14px 0}
+    ul.clean li:before{content:"•";position:absolute;left:7px;color:var(--accent);font-size:1.25rem}
+    .profile{display:grid;grid-template-columns:.72fr 1.28fr;gap:60px;align-items:center}
+    .portrait{
+      aspect-ratio:4/5;border-radius:180px 180px 24px 24px;border:1px solid var(--line);
+      background:
+        radial-gradient(circle at 50% 34%,rgba(165,91,63,.19),transparent 17%),
+        radial-gradient(circle at 51% 74%,rgba(69,105,93,.19),transparent 28%),
+        linear-gradient(150deg,rgba(255,255,255,.7),rgba(235,227,214,.65));
+      position:relative;overflow:hidden
+    }
+    .portrait:after{content:"ELA STOIKA";position:absolute;bottom:26px;left:0;right:0;text-align:center;letter-spacing:.18em;font-size:.68rem;color:var(--muted)}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0}
+    .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:.88rem;background:rgba(255,255,255,.35)}
+    .boundaries .panel{max-width:900px;margin:0 auto;background:rgba(255,253,248,.5)}
+    .boundaries h2{font-size:clamp(2rem,3.4vw,3.2rem)}
+    .cta{
+      border-radius:32px;padding:56px;background:var(--ink);color:var(--white);
+      display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px
+    }
+    .cta h2{color:var(--white);margin-bottom:11px}
+    .cta p{color:rgba(255,253,248,.72);margin:0}
+    .cta-actions{display:flex;flex-direction:column;align-items:flex-start;gap:11px}
+    .cta .btn{background:var(--white);color:var(--ink);border-color:var(--white)}
+    .cta-price{font-size:.92rem;color:rgba(255,253,248,.72)}
+    footer{padding:40px 0 58px;color:var(--muted);font-size:.88rem}
+    .footer-grid{display:flex;justify-content:space-between;gap:30px;align-items:flex-start;border-top:1px solid var(--line);padding-top:28px}
+    .disclaimer{max-width:800px}
+    .refs{margin-top:14px;font-size:.78rem}
+    .refs a{color:var(--muted)}
+
+    @media(max-width:980px){
+      .hero,.intro-grid,.profile,.cta{grid-template-columns:1fr}
+      .hero-visual{min-height:500px;order:-1}
+      .recognition-grid{grid-template-columns:1fr 1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .nav-actions>.btn{display:none}
+    }
+    @media(max-width:640px){
+      .wrap{width:min(calc(100% - 26px),var(--max))}
+      header{padding-top:24px}
+      .launch-strip{font-size:.86rem}
+      section{padding:60px 0}
+      .hero{gap:30px}
+      .hero-visual{min-height:380px;border-radius:26px}
+      h1{font-size:3rem}
+      .recognition-grid,.split,.process{grid-template-columns:1fr}
+      .cta{padding:34px 24px}
+      .footer-grid{flex-direction:column}
+      .hero-note{left:14px;right:14px;bottom:14px;max-width:none}
     }
   </style>
 </head>
 <body>
   <nav>
     <div class="wrap nav-inner">
-      <div class="brand"><span class="mark" aria-hidden="true"></span><span data-i18n="brand">Constelații Sistemice</span></div>
+      <div class="brand"><span class="mark" aria-hidden="true"></span><span data-i18n="brand">Ela Stoika · Constelații Sistemice</span></div>
       <div class="nav-actions">
         <div class="lang" aria-label="Language selector">
           <button id="roBtn" class="active" type="button">RO</button>
           <button id="enBtn" type="button">EN</button>
         </div>
-        <a class="btn dark" href="#contact" data-i18n="navCta">Discută o sesiune</a>
+        <a class="btn dark booking" href="https://calendly.com/e-stoika/constellation" target="_blank" rel="noopener" data-i18n="navCta">Programează o sesiune</a>
       </div>
     </div>
   </nav>
 
   <header>
-    <div class="wrap hero">
-      <div>
-        <div class="eyebrow" data-i18n="heroEyebrow">Fără cronometru. Fără atenție împărțită.</div>
-        <h1 class="serif" data-i18n="heroTitle">O sesiune.<br>Un obiectiv.<br>Până la capăt.</h1>
-        <p class="lead" data-i18n="heroLead">Fiecare client primește atenție 1:1, completă și neîmpărțită. Sesiunea nu se oprește pentru că au trecut 50 sau 90 de minute — continuăm până când obiectivul stabilit pentru acea întâlnire este atins, chiar dacă asta înseamnă până la 3 ore.</p>
-        <div class="hero-actions">
-          <a class="btn dark" href="#what" data-i18n="heroPrimary">Cum funcționează</a>
-          <a class="btn light" href="#expect" data-i18n="heroSecondary">La ce să te aștepți</a>
-        </div>
+    <div class="wrap">
+      <div class="launch-strip">
+        <strong data-i18n="launchStrong">Preț de lansare: 450 lei</strong>
+        <span data-i18n="launchText">· pentru primele 10 sesiuni 1:1</span>
       </div>
-      <div class="field" aria-label="Abstract relational system illustration">
-        <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
-        <div class="field-note" data-i18n="fieldNote">Spațiu 1:1 dedicat<br>temei tale, până la claritate.</div>
+
+      <div class="hero">
+        <div>
+          <div class="eyebrow" data-i18n="heroEyebrow">Constelații sistemice individuale · 1:1</div>
+          <h1 class="serif" data-i18n="heroTitle">Lucrăm pe obiectiv,<br>nu pe ceas.</h1>
+          <p class="big-copy" style="margin:0 0 19px" data-i18n="heroPromise">Sesiunea durează atât cât este nevoie pentru ca obiectivul să fie atins.</p>
+          <p class="lead" data-i18n="heroLead">Fiecare client primește atenție 1:1, completă și neîmpărțită. Sesiunea nu se oprește pentru că au trecut 50 sau 90 de minute — continuăm până când obiectivul stabilit pentru acea întâlnire este atins, chiar dacă asta înseamnă până la 3 ore.</p>
+
+          <div class="trust-row">
+            <span class="trust-pill" data-i18n="trust1">1:1</span>
+            <span class="trust-pill" data-i18n="trust2">Confidențial</span>
+            <span class="trust-pill" data-i18n="trust3">Până la 3 ore</span>
+            <span class="trust-pill" data-i18n="trust4">Un obiectiv clar</span>
+          </div>
+
+          <div class="offer-line">
+            <strong data-i18n="offerMain">Sesiune individuală · 450 lei</strong>
+            <span data-i18n="offerSub">Preț de lansare pentru primele 10 sesiuni.</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn dark booking" href="https://calendly.com/e-stoika/constellation" target="_blank" rel="noopener" data-i18n="heroPrimary">Programează o sesiune</a>
+            <a class="btn light" href="#what" data-i18n="heroSecondary">Vezi cum funcționează</a>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <img src="hero-constellations.png" alt="Sesiune individuală de constelații sistemice" />
+          <div class="hero-note" data-i18n="heroNote">Un spațiu privat în care atenția rămâne pe tema ta — fără presiunea unei ore care se termină.</div>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
+    <section class="recognition" id="recognition">
+      <div class="wrap">
+        <div class="recognition-head">
+          <div class="section-label" data-i18n="recognitionLabel">Te regăsești aici?</div>
+          <h2 class="serif" data-i18n="recognitionTitle">Uneori problema nu mai are nevoie de încă o analiză.</h2>
+        </div>
+        <div class="recognition-grid">
+          <div class="recognition-card"><div class="dot"></div><p data-i18n="r1">Ai o decizie pe care o întorci pe toate părțile, fără să ajungi la liniște.</p></div>
+          <div class="recognition-card"><div class="dot"></div><p data-i18n="r2">Același tipar revine în relații, familie, echipă sau muncă.</p></div>
+          <div class="recognition-card"><div class="dot"></div><p data-i18n="r3">Știi rațional ce ai de făcut, dar ceva continuă să te țină pe loc.</p></div>
+          <div class="recognition-card"><div class="dot"></div><p data-i18n="r4">Simți că problema este mai mare decât persoanele implicate și vrei să vezi sistemul.</p></div>
+        </div>
+        <p class="recognition-close" data-i18n="recognitionClose">Aici poate fi utilă o perspectivă sistemică.</p>
+      </div>
+    </section>
+
     <section id="what">
       <div class="wrap intro-grid">
         <div>
@@ -194,7 +254,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="for">
       <div class="wrap split">
         <div class="panel yes">
           <div class="section-label" data-i18n="forLabel">Pentru cine este</div>
@@ -207,47 +267,43 @@
             <li data-i18n="for5">Ești curios, reflexiv și dispus să testezi o metodă experiențială fără să îi ceri certitudini absolute.</li>
           </ul>
         </div>
-        <div class="panel no">
-          <div class="section-label" data-i18n="notLabel">Pentru cine nu este</div>
-          <h2 class="serif" data-i18n="notTitle">Nu este un oracol și nu înlocuiește îngrijirea clinică.</h2>
-          <ul class="clean">
-            <li data-i18n="not1">Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.</li>
-            <li data-i18n="not2">Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.</li>
-            <li data-i18n="not3">Dacă te afli într-o criză psihologică acută sau ai nevoie în primul rând de suport clinic specializat.</li>
-            <li data-i18n="not4">Dacă preferi exclusiv metode bazate pe dovezi experimentale robuste și standardizate.</li>
-            <li data-i18n="not5">Dacă nu ești confortabil cu explorarea experienței prin spațiu, corp, relație și metaforă.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials">
-      <div class="wrap">
-        <div class="section-label" data-i18n="testLabel">Experiența participanților</div>
-        <h2 class="serif" data-i18n="testTitle">Ce pot spune clienții după o sesiune.</h2>
-        <div class="quote-grid">
-          <blockquote class="card quote"><p data-i18n="q1">„Am venit cu o problemă pe care o întorsesem pe toate părțile. Faptul că am văzut-o în spațiu a schimbat întrebarea — și de acolo a apărut decizia.”</p><small data-i18n="qa1">Client coaching · leadership</small><div class="demo-note" data-i18n="demo">TEXT DEMO — înlocuiește cu testimonial verificat</div></blockquote>
-          <blockquote class="card quote"><p data-i18n="q2">„Nu am primit un răspuns prefabricat. Am observat ceva ce era mereu acolo, dar pe care conversația singură nu îl făcuse vizibil.”</p><small data-i18n="qa2">Fondator · antreprenoriat</small><div class="demo-note" data-i18n="demo">TEXT DEMO — înlocuiește cu testimonial verificat</div></blockquote>
-          <blockquote class="card quote"><p data-i18n="q3">„Cel mai util a fost că am plecat cu mai multă claritate și mai puțină luptă internă. Următorul pas a devenit simplu.”</p><small data-i18n="qa3">Client individual</small><div class="demo-note" data-i18n="demo">TEXT DEMO — înlocuiește cu testimonial verificat</div></blockquote>
+        <div class="panel" style="background:rgba(255,253,248,.5)">
+          <div class="section-label" data-i18n="privacyLabel">De ce 1:1</div>
+          <h2 class="serif" data-i18n="privacyTitle">Profunzime fără expunere de grup.</h2>
+          <p class="big-copy" data-i18n="privacyBig">Pentru mulți oameni, o temă personală are nevoie de spațiu, discreție și timp — nu de o sală plină de observatori.</p>
+          <p class="muted" data-i18n="privacyBody">Formatul individual permite ca ritmul, întrebările și atenția facilitatorului să rămână integral asupra situației tale. Nu trebuie să îți prezinți povestea unui grup și nu concurezi pentru timp cu alți participanți.</p>
         </div>
       </div>
     </section>
 
     <section id="facilitator">
       <div class="wrap profile">
-        <div class="portrait" aria-label="Facilitator portrait placeholder"></div>
+        <div class="portrait" aria-label="Ela Stoika"></div>
         <div>
           <div class="section-label" data-i18n="profileLabel">Facilitator</div>
-          <h2 class="serif" data-i18n="profileTitle">[Numele facilitatorului]</h2>
-          <p class="big-copy" data-i18n="profileBig">Aici va apărea introducerea personală a facilitatorului — cine este, ce îl/o aduce către constelațiile sistemice și ce fel de spațiu creează pentru participanți.</p>
-          <p class="muted" data-i18n="profileBody">Completează această secțiune cu formarea specifică în constelații sistemice, experiența profesională relevantă, modul de lucru și orice acreditări pe care facilitatorul dorește să le prezinte public. Textul final nu ar trebui să presupună nicio experiență sau calificare care nu a fost confirmată.</p>
+          <h2 class="serif">Ela Stoika</h2>
+          <p class="big-copy" data-i18n="profileBig">Ela facilitează sesiuni individuale de constelații sistemice într-un format centrat pe un obiectiv clar, cu atenție completă 1:1 și suficient timp pentru ca procesul să se desfășoare fără presiunea ceasului.</p>
+          <p class="muted" data-i18n="profileBody">Accentul este pe un spațiu privat, atent și structurat, în care situația poate fi privită ca sistem. Detaliile despre formarea și experiența specifică a facilitatorului pot fi adăugate aici atunci când sunt pregătite pentru publicare.</p>
           <div class="chips">
-            <span class="chip" data-i18n="chip1">Formare: [de completat]</span>
-            <span class="chip" data-i18n="chip2">Experiență: [de completat]</span>
-            <span class="chip" data-i18n="chip3">Format: [1:1 / grup]</span>
-            <span class="chip" data-i18n="chip4">Limbi: [de completat]</span>
+            <span class="chip" data-i18n="chip1">Format: 1:1</span>
+            <span class="chip" data-i18n="chip2">Durată: până la 3 ore</span>
+            <span class="chip" data-i18n="chip3">Focus: obiectivul sesiunii</span>
           </div>
-          <p class="muted" style="font-size:.9rem" data-i18n="profileEdit">Înlocuiește placeholder-ele cu fotografia, numele, bio-ul și formarea reală a facilitatorului înainte de publicare.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="boundaries" id="boundaries">
+      <div class="wrap">
+        <div class="panel no">
+          <div class="section-label" data-i18n="notLabel">Când nu este formatul potrivit</div>
+          <h2 class="serif" data-i18n="notTitle">Nu este un oracol și nu înlocuiește îngrijirea clinică.</h2>
+          <ul class="clean">
+            <li data-i18n="not1">Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.</li>
+            <li data-i18n="not2">Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.</li>
+            <li data-i18n="not3">Dacă te afli într-o criză psihologică acută sau ai nevoie în primul rând de suport clinic specializat.</li>
+            <li data-i18n="not4">Dacă preferi exclusiv metode bazate pe dovezi experimentale robuste și standardizate.</li>
+          </ul>
         </div>
       </div>
     </section>
@@ -255,11 +311,14 @@
     <section id="contact">
       <div class="wrap cta">
         <div>
-          <div class="section-label" style="color:#d8a28f" data-i18n="ctaLabel">Următorul pas</div>
+          <div class="section-label" style="color:#e0ad95" data-i18n="ctaLabel">Următorul pas</div>
           <h2 class="serif" data-i18n="ctaTitle">Ai o temă care pare blocată?</h2>
-          <p data-i18n="ctaBody">O conversație scurtă poate clarifica dacă o constelație este o modalitate potrivită de explorare.</p>
+          <p data-i18n="ctaBody">Dacă formatul rezonează cu ceea ce ai nevoie acum, poți rezerva direct o sesiune individuală cu Ela.</p>
         </div>
-        <a class="btn" href="mailto:YOUR-EMAIL@EXAMPLE.COM" data-i18n="ctaButton">Programează o conversație</a>
+        <div class="cta-actions">
+          <a class="btn booking" href="https://calendly.com/e-stoika/constellation" target="_blank" rel="noopener" data-i18n="ctaButton">Programează o sesiune</a>
+          <div class="cta-price" data-i18n="ctaPrice">Sesiune 1:1: 450 lei · până la 3 ore · preț de lansare</div>
+        </div>
       </div>
     </section>
   </main>
@@ -275,35 +334,111 @@
           <a href="https://coachingconstellations.com/faqs/" target="_blank" rel="noreferrer">Coaching Constellations FAQ</a>
         </div>
       </div>
-      <div>© 2026</div>
+      <div>© 2026 Ela Stoika</div>
     </div>
   </footer>
 
   <script>
     const copy = {
-      ro: {
-        brand:"Constelații Sistemice", navCta:"Discută o sesiune",
-        heroEyebrow:"Fără cronometru. Fără atenție împărțită.", heroTitle:"O sesiune.<br>Un obiectiv.<br>Până la capăt.", heroLead:"Fiecare client primește atenție 1:1, completă și neîmpărțită. Sesiunea nu se oprește pentru că au trecut 50 sau 90 de minute — continuăm până când obiectivul stabilit pentru acea întâlnire este atins, chiar dacă asta înseamnă până la 3 ore.", heroPrimary:"Cum funcționează", heroSecondary:"La ce să te aștepți", fieldNote:"Spațiu 1:1 dedicat<br>temei tale, până la claritate.",
-        whatLabel:"Ce sunt", whatTitle:"O hartă relațională în spațiu.", whatBig:"În loc să analizăm doar povestea, reprezentăm elementele importante ale situației: oameni, echipe, alegeri, obiective, obstacole sau părți ale propriei experiențe.", whatBody:"Prin poziționare, distanță, orientare și răspunsuri observabile, apar informații despre felul în care sistemul este perceput și organizat. Facilitatorul nu „ghicește” adevărul și nu prezice viitorul; procesul este folosit pentru reflecție, generarea de ipoteze și identificarea unor mișcări sau alegeri posibile.",
-        expectLabel:"La ce să te aștepți", expectTitle:"Timpul urmează procesul, nu invers.", step1h:"Formulăm întrebarea", step1p:"Clarificăm tema și ce ar fi util să înțelegi, fără să cerem o poveste completă.", step2h:"Construim harta", step2p:"Alegem elementele relevante și le reprezentăm în spațiu, cu persoane, obiecte sau markere.", step3h:"Observăm dinamica", step3p:"Explorăm relațiile, tensiunile, resursele și posibilele puncte de schimbare.", step4h:"Lucrăm până la obiectiv", step4p:"Nu încheiem pentru că „s-a terminat ora”. Sesiunea rămâne 1:1 și poate dura până la 3 ore, astfel încât procesul să ajungă la obiectivul stabilit.",
-        forLabel:"Pentru cine este", forTitle:"Când ai senzația că lipsește o piesă.", for1:"Te afli în fața unei decizii importante și argumentele raționale nu mai sunt suficiente.", for2:"Repeți același tipar în relații, echipe sau roluri.", for3:"Există tensiuni între apartenență, autonomie, responsabilitate și limite.", for4:"Conduci o echipă, companie sau tranziție și vrei să privești problema ca sistem.", for5:"Ești curios, reflexiv și dispus să testezi o metodă experiențială fără să îi ceri certitudini absolute.",
-        notLabel:"Pentru cine nu este", notTitle:"Nu este un oracol și nu înlocuiește îngrijirea clinică.", not1:"Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.", not2:"Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.", not3:"Dacă te afli într-o criză psihologică acută sau ai nevoie în primul rând de suport clinic specializat.", not4:"Dacă preferi exclusiv metode bazate pe dovezi experimentale robuste și standardizate.", not5:"Dacă nu ești confortabil cu explorarea experienței prin spațiu, corp, relație și metaforă.",
-        testLabel:"Experiența participanților", testTitle:"Ce pot spune clienții după o sesiune.", q1:"„Am venit cu o problemă pe care o întorsesem pe toate părțile. Faptul că am văzut-o în spațiu a schimbat întrebarea — și de acolo a apărut decizia.”", qa1:"Client coaching · leadership", q2:"„Nu am primit un răspuns prefabricat. Am observat ceva ce era mereu acolo, dar pe care conversația singură nu îl făcuse vizibil.”", qa2:"Fondator · antreprenoriat", q3:"„Cel mai util a fost că am plecat cu mai multă claritate și mai puțină luptă internă. Următorul pas a devenit simplu.”", qa3:"Client individual", demo:"TEXT DEMO — înlocuiește cu testimonial verificat",
-        profileLabel:"Facilitator", profileTitle:"[Numele facilitatorului]", profileBig:"Aici va apărea introducerea personală a facilitatorului — cine este, ce îl/o aduce către constelațiile sistemice și ce fel de spațiu creează pentru participanți.", profileBody:"Completează această secțiune cu formarea specifică în constelații sistemice, experiența profesională relevantă, modul de lucru și orice acreditări pe care facilitatorul dorește să le prezinte public. Textul final nu ar trebui să presupună nicio experiență sau calificare care nu a fost confirmată.", chip1:"Formare: [de completat]", chip2:"Experiență: [de completat]", chip3:"Format: [1:1 / grup]", chip4:"Limbi: [de completat]", profileEdit:"Înlocuiește placeholder-ele cu fotografia, numele, bio-ul și formarea reală a facilitatorului înainte de publicare.",
-        ctaLabel:"Următorul pas", ctaTitle:"Ai o temă care pare blocată?", ctaBody:"O conversație scurtă poate clarifica dacă o constelație este o modalitate potrivită de explorare.", ctaButton:"Programează o conversație",
-        discHead:"Notă de responsabilitate.", discBody:" Constelațiile sistemice sunt prezentate aici ca metodă de explorare și reflecție. Nu reprezintă diagnostic, tratament medical sau psihoterapie și nu înlocuiesc sprijinul unui profesionist clinic atunci când acesta este necesar. Cercetarea existentă raportează rezultate promițătoare în anumite contexte, dar baza de dovezi este încă limitată ca volum și calitate.", refsLabel:"Referințe de orientare:"
+      ro:{
+        brand:"Ela Stoika · Constelații Sistemice",navCta:"Programează o sesiune",
+        launchStrong:"Preț de lansare: 450 lei",launchText:"· pentru primele 10 sesiuni 1:1",
+        heroEyebrow:"Constelații sistemice individuale · 1:1",
+        heroTitle:"Lucrăm pe obiectiv,<br>nu pe ceas.",
+        heroPromise:"Sesiunea durează atât cât este nevoie pentru ca obiectivul să fie atins.",
+        heroLead:"Fiecare client primește atenție 1:1, completă și neîmpărțită. Sesiunea nu se oprește pentru că au trecut 50 sau 90 de minute — continuăm până când obiectivul stabilit pentru acea întâlnire este atins, chiar dacă asta înseamnă până la 3 ore.",
+        trust1:"1:1",trust2:"Confidențial",trust3:"Până la 3 ore",trust4:"Un obiectiv clar",
+        offerMain:"Sesiune individuală · 450 lei",offerSub:"Preț de lansare pentru primele 10 sesiuni.",
+        heroPrimary:"Programează o sesiune",heroSecondary:"Vezi cum funcționează",
+        heroNote:"Un spațiu privat în care atenția rămâne pe tema ta — fără presiunea unei ore care se termină.",
+        recognitionLabel:"Te regăsești aici?",recognitionTitle:"Uneori problema nu mai are nevoie de încă o analiză.",
+        r1:"Ai o decizie pe care o întorci pe toate părțile, fără să ajungi la liniște.",
+        r2:"Același tipar revine în relații, familie, echipă sau muncă.",
+        r3:"Știi rațional ce ai de făcut, dar ceva continuă să te țină pe loc.",
+        r4:"Simți că problema este mai mare decât persoanele implicate și vrei să vezi sistemul.",
+        recognitionClose:"Aici poate fi utilă o perspectivă sistemică.",
+        whatLabel:"Ce sunt",whatTitle:"O hartă relațională în spațiu.",
+        whatBig:"În loc să analizăm doar povestea, reprezentăm elementele importante ale situației: oameni, echipe, alegeri, obiective, obstacole sau părți ale propriei experiențe.",
+        whatBody:"Prin poziționare, distanță, orientare și răspunsuri observabile, apar informații despre felul în care sistemul este perceput și organizat. Facilitatorul nu „ghicește” adevărul și nu prezice viitorul; procesul este folosit pentru reflecție, generarea de ipoteze și identificarea unor mișcări sau alegeri posibile.",
+        expectLabel:"La ce să te aștepți",expectTitle:"Timpul urmează procesul, nu invers.",
+        step1h:"Formulăm întrebarea",step1p:"Clarificăm tema și ce ar fi util să înțelegi, fără să cerem o poveste completă.",
+        step2h:"Construim harta",step2p:"Alegem elementele relevante și le reprezentăm în spațiu, cu persoane, obiecte sau markere.",
+        step3h:"Observăm dinamica",step3p:"Explorăm relațiile, tensiunile, resursele și posibilele puncte de schimbare.",
+        step4h:"Lucrăm până la obiectiv",step4p:"Nu încheiem pentru că „s-a terminat ora”. Sesiunea rămâne 1:1 și poate dura până la 3 ore, astfel încât procesul să ajungă la obiectivul stabilit.",
+        forLabel:"Pentru cine este",forTitle:"Când ai senzația că lipsește o piesă.",
+        for1:"Te afli în fața unei decizii importante și argumentele raționale nu mai sunt suficiente.",
+        for2:"Repeți același tipar în relații, echipe sau roluri.",
+        for3:"Există tensiuni între apartenență, autonomie, responsabilitate și limite.",
+        for4:"Conduci o echipă, companie sau tranziție și vrei să privești problema ca sistem.",
+        for5:"Ești curios, reflexiv și dispus să testezi o metodă experiențială fără să îi ceri certitudini absolute.",
+        privacyLabel:"De ce 1:1",privacyTitle:"Profunzime fără expunere de grup.",
+        privacyBig:"Pentru mulți oameni, o temă personală are nevoie de spațiu, discreție și timp — nu de o sală plină de observatori.",
+        privacyBody:"Formatul individual permite ca ritmul, întrebările și atenția facilitatorului să rămână integral asupra situației tale. Nu trebuie să îți prezinți povestea unui grup și nu concurezi pentru timp cu alți participanți.",
+        profileLabel:"Facilitator",
+        profileBig:"Ela facilitează sesiuni individuale de constelații sistemice într-un format centrat pe un obiectiv clar, cu atenție completă 1:1 și suficient timp pentru ca procesul să se desfășoare fără presiunea ceasului.",
+        profileBody:"Accentul este pe un spațiu privat, atent și structurat, în care situația poate fi privită ca sistem. Detaliile despre formarea și experiența specifică a facilitatorului pot fi adăugate aici atunci când sunt pregătite pentru publicare.",
+        chip1:"Format: 1:1",chip2:"Durată: până la 3 ore",chip3:"Focus: obiectivul sesiunii",
+        notLabel:"Când nu este formatul potrivit",notTitle:"Nu este un oracol și nu înlocuiește îngrijirea clinică.",
+        not1:"Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.",
+        not2:"Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.",
+        not3:"Dacă te afli într-o criză psihologică acută sau ai nevoie în primul rând de suport clinic specializat.",
+        not4:"Dacă preferi exclusiv metode bazate pe dovezi experimentale robuste și standardizate.",
+        ctaLabel:"Următorul pas",ctaTitle:"Ai o temă care pare blocată?",
+        ctaBody:"Dacă formatul rezonează cu ceea ce ai nevoie acum, poți rezerva direct o sesiune individuală cu Ela.",
+        ctaButton:"Programează o sesiune",ctaPrice:"Sesiune 1:1: 450 lei · până la 3 ore · preț de lansare",
+        discHead:"Notă de responsabilitate.",
+        discBody:" Constelațiile sistemice sunt prezentate aici ca metodă de explorare și reflecție. Nu reprezintă diagnostic, tratament medical sau psihoterapie și nu înlocuiesc sprijinul unui profesionist clinic atunci când acesta este necesar. Cercetarea existentă raportează rezultate promițătoare în anumite contexte, dar baza de dovezi este încă limitată ca volum și calitate.",
+        refsLabel:"Referințe de orientare:"
       },
-      en: {
-        brand:"Systemic Constellations", navCta:"Discuss a session",
-        heroEyebrow:"No stopwatch. No divided attention.", heroTitle:"One session.<br>One objective.<br>All the way through.", heroLead:"Every client receives complete, undivided 1:1 attention. The session does not stop because 50 or 90 minutes have passed — we continue until the objective set for that meeting is reached, even when that means up to 3 hours.", heroPrimary:"How it works", heroSecondary:"What to expect", fieldNote:"Dedicated 1:1 space<br>for your theme, through to clarity.",
-        whatLabel:"What it is", whatTitle:"A relational map in space.", whatBig:"Instead of analysing only the story, we represent the important elements of the situation: people, teams, choices, goals, obstacles, or parts of your own experience.", whatBody:"Through position, distance, orientation and observable responses, information can emerge about how the system is perceived and organised. The facilitator does not “guess” the truth or predict the future; the process is used for reflection, hypothesis-building and identifying possible movements or choices.",
-        expectLabel:"What to expect", expectTitle:"The clock follows the process — not the other way around.", step1h:"Frame the question", step1p:"We clarify the theme and what would be useful to understand, without requiring your entire story.", step2h:"Build the map", step2p:"We choose the relevant elements and represent them in space using people, objects or markers.", step3h:"Notice the dynamics", step3p:"We explore relationships, tensions, resources and possible leverage points for change.", step4h:"Work through to the objective", step4p:"We do not stop simply because the booked hour is over. The session remains fully 1:1 and can run up to 3 hours so the process can reach the objective set for that session.",
-        forLabel:"Who it is for", forTitle:"When it feels like a piece is missing.", for1:"You are facing an important decision and rational arguments are no longer enough.", for2:"You keep meeting the same pattern in relationships, teams or roles.", for3:"There is tension between belonging, autonomy, responsibility and boundaries.", for4:"You lead a team, company or transition and want to look at the issue as a system.", for5:"You are curious, reflective and willing to try an experiential method without asking it for absolute certainty.",
-        notLabel:"Who it is not for", notTitle:"It is not an oracle and it does not replace clinical care.", not1:"If you want the facilitator to tell you what is “true”, who is right, or what will happen.", not2:"If you are looking for psychological, psychiatric or medical diagnosis.", not3:"If you are in an acute psychological crisis or primarily need specialised clinical support.", not4:"If you only want methods backed by robust, standardised experimental evidence.", not5:"If you are not comfortable exploring experience through space, body, relationship and metaphor.",
-        testLabel:"Participant experience", testTitle:"What clients may say after a session.", q1:"“I came with a problem I had analysed from every angle. Seeing it in space changed the question — and from there, the decision appeared.”", qa1:"Coaching client · leadership", q2:"“I was not given a pre-packaged answer. I noticed something that had always been there, but conversation alone had never made visible.”", qa2:"Founder · entrepreneurship", q3:"“The most useful part was leaving with more clarity and less internal struggle. The next step became simple.”", qa3:"Individual client", demo:"DEMO COPY — replace with a verified testimonial",
-        profileLabel:"Facilitator", profileTitle:"[Facilitator name]", profileBig:"This is where the facilitator’s personal introduction will go — who they are, what brings them to systemic constellations, and the kind of space they aim to create for participants.", profileBody:"Complete this section with the facilitator’s actual systemic-constellations training, relevant professional experience, way of working, and any credentials they wish to display publicly. The final text should not imply any experience or qualification that has not been confirmed.", chip1:"Training: [to complete]", chip2:"Experience: [to complete]", chip3:"Format: [1:1 / group]", chip4:"Languages: [to complete]", profileEdit:"Replace these placeholders with the facilitator’s real photograph, name, bio and training before publishing.",
-        ctaLabel:"Next step", ctaTitle:"Is there a theme that feels stuck?", ctaBody:"A short conversation can clarify whether a constellation is an appropriate way to explore it.", ctaButton:"Schedule a conversation",
-        discHead:"Responsible-use note.", discBody:" Systemic constellations are presented here as a method of exploration and reflection. They are not medical diagnosis, medical treatment or psychotherapy, and they do not replace support from a qualified clinical professional when that is needed. Existing research reports promising outcomes in some contexts, but the evidence base remains limited in quantity and overall quality.", refsLabel:"Orientation references:"
+      en:{
+        brand:"Ela Stoika · Systemic Constellations",navCta:"Book a session",
+        launchStrong:"Launch price: 450 RON",launchText:"· for the first 10 private sessions",
+        heroEyebrow:"Private systemic constellations · 1:1",
+        heroTitle:"We work toward the objective,<br>not the clock.",
+        heroPromise:"The session lasts as long as needed for the objective to be reached.",
+        heroLead:"Every client receives complete, undivided 1:1 attention. The session does not stop because 50 or 90 minutes have passed — we continue until the objective set for that meeting is reached, even when that means up to 3 hours.",
+        trust1:"1:1",trust2:"Confidential",trust3:"Up to 3 hours",trust4:"One clear objective",
+        offerMain:"Private session · 450 RON",offerSub:"Launch price for the first 10 sessions.",
+        heroPrimary:"Book a session",heroSecondary:"See how it works",
+        heroNote:"A private space where the attention stays on your theme — without pressure from a session clock.",
+        recognitionLabel:"Does this sound familiar?",recognitionTitle:"Sometimes the problem does not need another round of analysis.",
+        r1:"You have a decision you keep turning over from every angle, without reaching clarity.",
+        r2:"The same pattern keeps returning in relationships, family, teams or work.",
+        r3:"You know rationally what you should do, yet something still keeps you stuck.",
+        r4:"The issue feels larger than the people involved and you want to see the system around it.",
+        recognitionClose:"This is where a systemic perspective can be useful.",
+        whatLabel:"What it is",whatTitle:"A relational map in space.",
+        whatBig:"Instead of analysing only the story, we represent the important elements of the situation: people, teams, choices, goals, obstacles, or parts of your own experience.",
+        whatBody:"Through position, distance, orientation and observable responses, information can emerge about how the system is perceived and organised. The facilitator does not “guess” the truth or predict the future; the process is used for reflection, hypothesis-building and identifying possible movements or choices.",
+        expectLabel:"What to expect",expectTitle:"The clock follows the process — not the other way around.",
+        step1h:"Frame the question",step1p:"We clarify the theme and what would be useful to understand, without requiring your entire story.",
+        step2h:"Build the map",step2p:"We choose the relevant elements and represent them in space using people, objects or markers.",
+        step3h:"Notice the dynamics",step3p:"We explore relationships, tensions, resources and possible leverage points for change.",
+        step4h:"Work through to the objective",step4p:"We do not stop simply because the booked hour is over. The session remains fully 1:1 and can run up to 3 hours so the process can reach the objective set for that session.",
+        forLabel:"Who it is for",forTitle:"When it feels like a piece is missing.",
+        for1:"You are facing an important decision and rational arguments are no longer enough.",
+        for2:"You keep meeting the same pattern in relationships, teams or roles.",
+        for3:"There is tension between belonging, autonomy, responsibility and boundaries.",
+        for4:"You lead a team, company or transition and want to look at the issue as a system.",
+        for5:"You are curious, reflective and willing to try an experiential method without asking it for absolute certainty.",
+        privacyLabel:"Why 1:1",privacyTitle:"Depth without group exposure.",
+        privacyBig:"For many people, a personal theme needs space, discretion and time — not a room full of observers.",
+        privacyBody:"The private format lets the pace, questions and facilitator’s attention remain entirely on your situation. You do not have to present your story to a group or compete with other participants for time.",
+        profileLabel:"Facilitator",
+        profileBig:"Ela facilitates private systemic constellation sessions centered on a clear objective, with complete 1:1 attention and enough time for the process to unfold without pressure from the clock.",
+        profileBody:"The emphasis is on a private, attentive and structured space where the situation can be viewed as a system. Details about the facilitator’s specific training and experience can be added here when they are ready for publication.",
+        chip1:"Format: 1:1",chip2:"Duration: up to 3 hours",chip3:"Focus: the session objective",
+        notLabel:"When this is not the right format",notTitle:"It is not an oracle and it does not replace clinical care.",
+        not1:"If you want the facilitator to tell you what is “true”, who is right, or what will happen.",
+        not2:"If you are looking for psychological, psychiatric or medical diagnosis.",
+        not3:"If you are in an acute psychological crisis or primarily need specialised clinical support.",
+        not4:"If you only want methods backed by robust, standardised experimental evidence.",
+        ctaLabel:"Next step",ctaTitle:"Is there a theme that feels stuck?",
+        ctaBody:"If this format resonates with what you need now, you can book a private session with Ela directly.",
+        ctaButton:"Book a session",ctaPrice:"1:1 session: 450 RON · up to 3 hours · launch price",
+        discHead:"Responsible-use note.",
+        discBody:" Systemic constellations are presented here as a method of exploration and reflection. They are not medical diagnosis, medical treatment or psychotherapy, and they do not replace support from a qualified clinical professional when that is needed. Existing research reports promising outcomes in some contexts, but the evidence base remains limited in quantity and overall quality.",
+        refsLabel:"Orientation references:"
       }
     };
 
@@ -311,15 +446,17 @@
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.dataset.i18n;
-        if (copy[lang][key] !== undefined) el.innerHTML = copy[lang][key];
+        if(copy[lang][key] !== undefined) el.innerHTML = copy[lang][key];
       });
       document.getElementById('roBtn').classList.toggle('active', lang === 'ro');
       document.getElementById('enBtn').classList.toggle('active', lang === 'en');
       localStorage.setItem('constellationsLang', lang);
-      document.title = lang === 'ro' ? 'Constelații Sistemice' : 'Systemic Constellations';
+      document.title = lang === 'ro'
+        ? 'Ela Stoika | Constelații Sistemice 1:1'
+        : 'Ela Stoika | Systemic Constellations 1:1';
     }
-    document.getElementById('roBtn').addEventListener('click', () => setLang('ro'));
-    document.getElementById('enBtn').addEventListener('click', () => setLang('en'));
+    document.getElementById('roBtn').addEventListener('click',()=>setLang('ro'));
+    document.getElementById('enBtn').addEventListener('click',()=>setLang('en'));
     setLang(localStorage.getItem('constellationsLang') || 'ro');
   </script>
 </body>
