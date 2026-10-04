@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Constelații sistemice — o experiență de explorare a dinamicilor relaționale, personale și profesionale." />
+  <title>Constelații Sistemice | Systemic Constellations</title>
+  <style>
+    :root {
+      --ink: #24312c;
+      --muted: #65726b;
+      --paper: #f6f2e9;
+      --paper-2: #ece6da;
+      --white: #fffdf8;
+      --line: rgba(36,49,44,.15);
+      --accent: #a0573e;
+      --accent-2: #46675b;
+      --shadow: 0 18px 55px rgba(36,49,44,.10);
+      --radius: 24px;
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 8%, rgba(160,87,62,.09), transparent 27rem),
+        radial-gradient(circle at 88% 20%, rgba(70,103,91,.10), transparent 30rem),
+        var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    .serif { font-family: Georgia, "Times New Roman", serif; }
+    .wrap { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
+    nav {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(246,242,233,.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 750; letter-spacing: -.02em; }
+    .mark { width: 31px; height: 31px; border: 1.5px solid var(--accent-2); border-radius: 50%; position: relative; }
+    .mark:before,.mark:after { content: ""; position: absolute; border-radius: 50%; border: 1px solid var(--accent); }
+    .mark:before { width: 13px; height: 13px; left: 15px; top: -4px; }
+    .mark:after { width: 8px; height: 8px; left: -4px; bottom: 2px; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: rgba(255,255,255,.45); }
+    .lang button { border: 0; background: transparent; color: var(--muted); padding: 7px 10px; border-radius: 999px; cursor: pointer; font-weight: 700; }
+    .lang button.active { background: var(--ink); color: var(--white); }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; border-radius: 999px; padding: 12px 18px; font-weight: 750; border: 1px solid var(--ink); transition: .2s ease; }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(36,49,44,.12); }
+    .btn.dark { color: var(--white); background: var(--ink); }
+    .btn.light { background: transparent; }
+    header { padding: 86px 0 62px; min-height: 72vh; display: flex; align-items: center; }
+    .hero { display: grid; grid-template-columns: 1.15fr .85fr; gap: 60px; align-items: center; }
+    .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .76rem; font-weight: 800; color: var(--accent); margin-bottom: 18px; }
+    h1 { font-size: clamp(3.15rem, 7vw, 6.7rem); line-height: .92; letter-spacing: -.055em; margin: 0 0 26px; font-weight: 520; }
+    .lead { font-size: clamp(1.1rem, 1.7vw, 1.35rem); color: var(--muted); max-width: 720px; margin-bottom: 30px; }
+    .hero-actions { display:flex; gap: 12px; flex-wrap: wrap; }
+    .field { aspect-ratio: 1/1; position: relative; border-radius: 50%; border: 1px solid rgba(36,49,44,.20); max-width: 470px; justify-self: end; }
+    .field:before,.field:after { content:""; position:absolute; border-radius:50%; border:1px solid rgba(36,49,44,.14); }
+    .field:before { inset: 13%; }
+    .field:after { inset: 29%; }
+    .node { position:absolute; width: 18px; height: 18px; background: var(--accent); border-radius:50%; box-shadow: 0 0 0 7px rgba(160,87,62,.10); }
+    .node:nth-child(1) { top:12%; left:45%; }
+    .node:nth-child(2) { top:34%; right:6%; background:var(--accent-2); box-shadow:0 0 0 7px rgba(70,103,91,.10); }
+    .node:nth-child(3) { bottom:14%; right:26%; }
+    .node:nth-child(4) { bottom:21%; left:13%; background:var(--accent-2); box-shadow:0 0 0 7px rgba(70,103,91,.10); }
+    .node:nth-child(5) { top:27%; left:20%; }
+    .field-note { position:absolute; inset: 39% 17% auto; text-align:center; font-size:.92rem; color:var(--muted); }
+    section { padding: 84px 0; }
+    .section-label { color: var(--accent); text-transform: uppercase; letter-spacing: .13em; font-size: .74rem; font-weight: 800; margin-bottom: 14px; }
+    h2 { font-size: clamp(2.2rem, 4.5vw, 4.1rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 520; margin: 0 0 24px; }
+    h3 { font-size: 1.18rem; margin: 0 0 8px; }
+    .intro-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:70px; }
+    .big-copy { font-size: clamp(1.35rem,2.1vw,1.9rem); line-height:1.42; letter-spacing:-.02em; }
+    .muted { color:var(--muted); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:34px; }
+    .card { background: rgba(255,253,248,.68); border:1px solid var(--line); border-radius:var(--radius); padding:28px; box-shadow:var(--shadow); }
+    .num { font-family: Georgia, serif; font-size:2.25rem; color:var(--accent); margin-bottom:22px; }
+    .split { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .panel { padding: 34px; border-radius: var(--radius); border:1px solid var(--line); }
+    .panel.yes { background:rgba(70,103,91,.08); }
+    .panel.no { background:rgba(160,87,62,.07); }
+    ul.clean { list-style:none; padding:0; margin:22px 0 0; }
+    ul.clean li { position:relative; padding-left:28px; margin:14px 0; }
+    ul.clean li:before { content:"•"; position:absolute; left:7px; color:var(--accent); font-size:1.25rem; }
+    .process { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; counter-reset: steps; margin-top:34px; }
+    .step { border-top:1px solid var(--line); padding-top:20px; }
+    .step:before { counter-increment:steps; content:"0" counter(steps); display:block; color:var(--accent); font-weight:800; font-size:.78rem; letter-spacing:.1em; margin-bottom:28px; }
+    .quote-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    blockquote { margin:0; }
+    .quote { min-height:235px; display:flex; flex-direction:column; justify-content:space-between; }
+    .quote p { font-family:Georgia,serif; font-size:1.25rem; line-height:1.45; margin:0 0 26px; }
+    .quote small { color:var(--muted); }
+    .demo-note { margin-top:14px; font-size:.78rem; color:var(--accent); font-weight:750; }
+    .profile { display:grid; grid-template-columns:.72fr 1.28fr; gap:60px; align-items:center; }
+    .portrait { aspect-ratio:4/5; border-radius: 180px 180px 24px 24px; border:1px solid var(--line); background:
+      radial-gradient(circle at 50% 34%, rgba(160,87,62,.19), transparent 17%),
+      radial-gradient(circle at 51% 74%, rgba(70,103,91,.19), transparent 28%),
+      linear-gradient(150deg, rgba(255,255,255,.7), rgba(236,230,218,.65));
+      position:relative; overflow:hidden;
+    }
+    .portrait:after { content:"FACILITATOR"; position:absolute; bottom:26px; left:0; right:0; text-align:center; letter-spacing:.18em; font-size:.7rem; color:var(--muted); }
+    .chips { display:flex; flex-wrap:wrap; gap:9px; margin:25px 0; }
+    .chip { padding:8px 12px; border:1px solid var(--line); border-radius:999px; font-size:.88rem; background:rgba(255,255,255,.35); }
+    .cta { border-radius:32px; padding:55px; background:var(--ink); color:var(--white); display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:40px; }
+    .cta h2 { color:var(--white); margin-bottom:10px; }
+    .cta p { color:rgba(255,253,248,.72); margin:0; }
+    .cta .btn { background:var(--white); color:var(--ink); border-color:var(--white); justify-self:end; }
+    footer { padding:40px 0 58px; color:var(--muted); font-size:.88rem; }
+    .footer-grid { display:flex; justify-content:space-between; gap:30px; align-items:flex-start; border-top:1px solid var(--line); padding-top:28px; }
+    .disclaimer { max-width:760px; }
+    .refs { margin-top:14px; font-size:.78rem; }
+    .refs a { color:var(--muted); }
+    @media (max-width:900px){
+      .hero,.intro-grid,.profile,.cta { grid-template-columns:1fr; }
+      .field { justify-self:center; max-width:360px; width:88%; order:-1; }
+      .cards,.quote-grid { grid-template-columns:1fr; }
+      .process { grid-template-columns:1fr 1fr; }
+      .cta .btn { justify-self:start; }
+      .nav-actions>.btn { display:none; }
+    }
+    @media (max-width:620px){
+      .wrap { width:min(calc(100% - 26px), var(--max)); }
+      header { padding-top:48px; }
+      section { padding:60px 0; }
+      .split,.process { grid-template-columns:1fr; }
+      h1 { font-size:3.25rem; }
+      .cta { padding:34px 24px; }
+      .footer-grid { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="wrap nav-inner">
+      <div class="brand"><span class="mark" aria-hidden="true"></span><span data-i18n="brand">Constelații Sistemice</span></div>
+      <div class="nav-actions">
+        <div class="lang" aria-label="Language selector">
+          <button id="roBtn" class="active" type="button">RO</button>
+          <button id="enBtn" type="button">EN</button>
+        </div>
+        <a class="btn dark" href="#contact" data-i18n="navCta">Discută o sesiune</a>
+      </div>
+    </div>
+  </nav>
+
+  <header>
+    <div class="wrap hero">
+      <div>
+        <div class="eyebrow" data-i18n="heroEyebrow">Fără cronometru. Fără atenție împărțită.</div>
+        <h1 class="serif" data-i18n="heroTitle">O sesiune.<br>Un obiectiv.<br>Până la capăt.</h1>
+        <p class="lead" data-i18n="heroLead">Fiecare client primește atenție 1:1, completă și neîmpărțită. Sesiunea nu se oprește pentru că au trecut 50 sau 90 de minute — continuăm până când obiectivul stabilit pentru acea întâlnire este atins, chiar dacă asta înseamnă până la 3 ore.</p>
+        <div class="hero-actions">
+          <a class="btn dark" href="#what" data-i18n="heroPrimary">Cum funcționează</a>
+          <a class="btn light" href="#expect" data-i18n="heroSecondary">La ce să te aștepți</a>
+        </div>
+      </div>
+      <div class="field" aria-label="Abstract relational system illustration">
+        <span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span><span class="node"></span>
+        <div class="field-note" data-i18n="fieldNote">Spațiu 1:1 dedicat<br>temei tale, până la claritate.</div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="what">
+      <div class="wrap intro-grid">
+        <div>
+          <div class="section-label" data-i18n="whatLabel">Ce sunt</div>
+          <h2 class="serif" data-i18n="whatTitle">O hartă relațională în spațiu.</h2>
+        </div>
+        <div>
+          <p class="big-copy" data-i18n="whatBig">În loc să analizăm doar povestea, reprezentăm elementele importante ale situației: oameni, echipe, alegeri, obiective, obstacole sau părți ale propriei experiențe.</p>
+          <p class="muted" data-i18n="whatBody">Prin poziționare, distanță, orientare și răspunsuri observabile, apar informații despre felul în care sistemul este perceput și organizat. Facilitatorul nu „ghicește” adevărul și nu prezice viitorul; procesul este folosit pentru reflecție, generarea de ipoteze și identificarea unor mișcări sau alegeri posibile.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="expect">
+      <div class="wrap">
+        <div class="section-label" data-i18n="expectLabel">La ce să te aștepți</div>
+        <h2 class="serif" data-i18n="expectTitle">Timpul urmează procesul, nu invers.</h2>
+        <div class="process">
+          <div class="step"><h3 data-i18n="step1h">Formulăm întrebarea</h3><p class="muted" data-i18n="step1p">Clarificăm tema și ce ar fi util să înțelegi, fără să cerem o poveste completă.</p></div>
+          <div class="step"><h3 data-i18n="step2h">Construim harta</h3><p class="muted" data-i18n="step2p">Alegem elementele relevante și le reprezentăm în spațiu, cu persoane, obiecte sau markere.</p></div>
+          <div class="step"><h3 data-i18n="step3h">Observăm dinamica</h3><p class="muted" data-i18n="step3p">Explorăm relațiile, tensiunile, resursele și posibilele puncte de schimbare.</p></div>
+          <div class="step"><h3 data-i18n="step4h">Lucrăm până la obiectiv</h3><p class="muted" data-i18n="step4p">Nu încheiem pentru că „s-a terminat ora”. Sesiunea rămâne 1:1 și poate dura până la 3 ore, astfel încât procesul să ajungă la obiectivul stabilit.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap split">
+        <div class="panel yes">
+          <div class="section-label" data-i18n="forLabel">Pentru cine este</div>
+          <h2 class="serif" data-i18n="forTitle">Când ai senzația că lipsește o piesă.</h2>
+          <ul class="clean">
+            <li data-i18n="for1">Te afli în fața unei decizii importante și argumentele raționale nu mai sunt suficiente.</li>
+            <li data-i18n="for2">Repeți același tipar în relații, echipe sau roluri.</li>
+            <li data-i18n="for3">Există tensiuni între apartenență, autonomie, responsabilitate și limite.</li>
+            <li data-i18n="for4">Conduci o echipă, companie sau tranziție și vrei să privești problema ca sistem.</li>
+            <li data-i18n="for5">Ești curios, reflexiv și dispus să testezi o metodă experiențială fără să îi ceri certitudini absolute.</li>
+          </ul>
+        </div>
+        <div class="panel no">
+          <div class="section-label" data-i18n="notLabel">Pentru cine nu este</div>
+          <h2 class="serif" data-i18n="notTitle">Nu este un oracol și nu înlocuiește îngrijirea clinică.</h2>
+          <ul class="clean">
+            <li data-i18n="not1">Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.</li>
+            <li data-i18n="not2">Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.</li>
+            <li data-i18n="not3">Dacă te afli într-o criză psihologică acută sau ai nevoie în primul rând de suport clinic specializat.</li>
+            <li data-i18n="not4">Dacă preferi exclusiv metode bazate pe dovezi experimentale robuste și standardizate.</li>
+            <li data-i18n="not5">Dacă nu ești confortabil cu explorarea experienței prin spațiu, corp, relație și metaforă.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="testimonials">
+      <div class="wrap">
+        <div class="section-label" data-i18n="testLabel">Experiența participanților</div>
+        <h2 class="serif" data-i18n="testTitle">Ce pot spune clienții după o sesiune.</h2>
+        <div class="quote-grid">
+          <blockquote class="card quote"><p data-i18n="q1">„Am venit cu o problemă pe care o întorsesem pe toate părțile. Faptul că am văzut-o în spațiu a schimbat întrebarea — și de acolo a apărut decizia.”</p><small data-i18n="qa1">Client coaching · leadership</small><div class="demo-note" data-i18n="demo">TEXT DEMO — înlocuiește cu testimonial verificat</div></blockquote>
+          <blockquote class="card quote"><p data-i18n="q2">„Nu am primit un răspuns prefabricat. Am observat ceva ce era mereu acolo, dar pe care conversația singură nu îl făcuse vizibil.”</p><small data-i18n="qa2">Fondator · antreprenoriat</small><div class="demo-note" data-i18n="demo">TEXT DEMO — înlocuiește cu testimonial verificat</div></blockquote>
+          <blockquote class="card quote"><p data-i18n="q3">„Cel mai util a fost că am plecat cu mai multă claritate și mai puțină luptă internă. Următorul pas a devenit simplu.”</p><small data-i18n="qa3">Client individual</small><div class="demo-note" data-i18n="demo">TEXT DEMO — înlocuiește cu testimonial verificat</div></blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section id="facilitator">
+      <div class="wrap profile">
+        <div class="portrait" aria-label="Facilitator portrait placeholder"></div>
+        <div>
+          <div class="section-label" data-i18n="profileLabel">Facilitator</div>
+          <h2 class="serif" data-i18n="profileTitle">[Numele facilitatorului]</h2>
+          <p class="big-copy" data-i18n="profileBig">Aici va apărea introducerea personală a facilitatorului — cine este, ce îl/o aduce către constelațiile sistemice și ce fel de spațiu creează pentru participanți.</p>
+          <p class="muted" data-i18n="profileBody">Completează această secțiune cu formarea specifică în constelații sistemice, experiența profesională relevantă, modul de lucru și orice acreditări pe care facilitatorul dorește să le prezinte public. Textul final nu ar trebui să presupună nicio experiență sau calificare care nu a fost confirmată.</p>
+          <div class="chips">
+            <span class="chip" data-i18n="chip1">Formare: [de completat]</span>
+            <span class="chip" data-i18n="chip2">Experiență: [de completat]</span>
+            <span class="chip" data-i18n="chip3">Format: [1:1 / grup]</span>
+            <span class="chip" data-i18n="chip4">Limbi: [de completat]</span>
+          </div>
+          <p class="muted" style="font-size:.9rem" data-i18n="profileEdit">Înlocuiește placeholder-ele cu fotografia, numele, bio-ul și formarea reală a facilitatorului înainte de publicare.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap cta">
+        <div>
+          <div class="section-label" style="color:#d8a28f" data-i18n="ctaLabel">Următorul pas</div>
+          <h2 class="serif" data-i18n="ctaTitle">Ai o temă care pare blocată?</h2>
+          <p data-i18n="ctaBody">O conversație scurtă poate clarifica dacă o constelație este o modalitate potrivită de explorare.</p>
+        </div>
+        <a class="btn" href="mailto:YOUR-EMAIL@EXAMPLE.COM" data-i18n="ctaButton">Programează o conversație</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div class="disclaimer">
+        <strong data-i18n="discHead">Notă de responsabilitate.</strong>
+        <span data-i18n="discBody"> Constelațiile sistemice sunt prezentate aici ca metodă de explorare și reflecție. Nu reprezintă diagnostic, tratament medical sau psihoterapie și nu înlocuiesc sprijinul unui profesionist clinic atunci când acesta este necesar. Cercetarea existentă raportează rezultate promițătoare în anumite contexte, dar baza de dovezi este încă limitată ca volum și calitate.</span>
+        <div class="refs">
+          <span data-i18n="refsLabel">Referințe de orientare:</span>
+          <a href="https://pubmed.ncbi.nlm.nih.gov/33528854/" target="_blank" rel="noreferrer">Konkolÿ Thege et al., 2021</a> ·
+          <a href="https://coachingconstellations.com/faqs/" target="_blank" rel="noreferrer">Coaching Constellations FAQ</a>
+        </div>
+      </div>
+      <div>© 2026</div>
+    </div>
+  </footer>
+
+  <script>
+    const copy = {
+      ro: {
+        brand:"Constelații Sistemice", navCta:"Discută o sesiune",
+        heroEyebrow:"Fără cronometru. Fără atenție împărțită.", heroTitle:"O sesiune.<br>Un obiectiv.<br>Până la capăt.", heroLead:"Fiecare client primește atenție 1:1, completă și neîmpărțită. Sesiunea nu se oprește pentru că au trecut 50 sau 90 de minute — continuăm până când obiectivul stabilit pentru acea întâlnire este atins, chiar dacă asta înseamnă până la 3 ore.", heroPrimary:"Cum funcționează", heroSecondary:"La ce să te aștepți", fieldNote:"Spațiu 1:1 dedicat<br>temei tale, până la claritate.",
+        whatLabel:"Ce sunt", whatTitle:"O hartă relațională în spațiu.", whatBig:"În loc să analizăm doar povestea, reprezentăm elementele importante ale situației: oameni, echipe, alegeri, obiective, obstacole sau părți ale propriei experiențe.", whatBody:"Prin poziționare, distanță, orientare și răspunsuri observabile, apar informații despre felul în care sistemul este perceput și organizat. Facilitatorul nu „ghicește” adevărul și nu prezice viitorul; procesul este folosit pentru reflecție, generarea de ipoteze și identificarea unor mișcări sau alegeri posibile.",
+        expectLabel:"La ce să te aștepți", expectTitle:"Timpul urmează procesul, nu invers.", step1h:"Formulăm întrebarea", step1p:"Clarificăm tema și ce ar fi util să înțelegi, fără să cerem o poveste completă.", step2h:"Construim harta", step2p:"Alegem elementele relevante și le reprezentăm în spațiu, cu persoane, obiecte sau markere.", step3h:"Observăm dinamica", step3p:"Explorăm relațiile, tensiunile, resursele și posibilele puncte de schimbare.", step4h:"Lucrăm până la obiectiv", step4p:"Nu încheiem pentru că „s-a terminat ora”. Sesiunea rămâne 1:1 și poate dura până la 3 ore, astfel încât procesul să ajungă la obiectivul stabilit.",
+        forLabel:"Pentru cine este", forTitle:"Când ai senzația că lipsește o piesă.", for1:"Te afli în fața unei decizii importante și argumentele raționale nu mai sunt suficiente.", for2:"Repeți același tipar în relații, echipe sau roluri.", for3:"Există tensiuni între apartenență, autonomie, responsabilitate și limite.", for4:"Conduci o echipă, companie sau tranziție și vrei să privești problema ca sistem.", for5:"Ești curios, reflexiv și dispus să testezi o metodă experiențială fără să îi ceri certitudini absolute.",
+        notLabel:"Pentru cine nu este", notTitle:"Nu este un oracol și nu înlocuiește îngrijirea clinică.", not1:"Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.", not2:"Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.", not3:"Dacă te afli într-o criză psihologică acută sau ai nevoie în primul rând de suport clinic specializat.", not4:"Dacă preferi exclusiv metode bazate pe dovezi experimentale robuste și standardizate.", not5:"Dacă nu ești confortabil cu explorarea experienței prin spațiu, corp, relație și metaforă.",
+        testLabel:"Experiența participanților", testTitle:"Ce pot spune clienții după o sesiune.", q1:"„Am venit cu o problemă pe care o întorsesem pe toate părțile. Faptul că am văzut-o în spațiu a schimbat întrebarea — și de acolo a apărut decizia.”", qa1:"Client coaching · leadership", q2:"„Nu am primit un răspuns prefabricat. Am observat ceva ce era mereu acolo, dar pe care conversația singură nu îl făcuse vizibil.”", qa2:"Fondator · antreprenoriat", q3:"„Cel mai util a fost că am plecat cu mai multă claritate și mai puțină luptă internă. Următorul pas a devenit simplu.”", qa3:"Client individual", demo:"TEXT DEMO — înlocuiește cu testimonial verificat",
+        profileLabel:"Facilitator", profileTitle:"[Numele facilitatorului]", profileBig:"Aici va apărea introducerea personală a facilitatorului — cine este, ce îl/o aduce către constelațiile sistemice și ce fel de spațiu creează pentru participanți.", profileBody:"Completează această secțiune cu formarea specifică în constelații sistemice, experiența profesională relevantă, modul de lucru și orice acreditări pe care facilitatorul dorește să le prezinte public. Textul final nu ar trebui să presupună nicio experiență sau calificare care nu a fost confirmată.", chip1:"Formare: [de completat]", chip2:"Experiență: [de completat]", chip3:"Format: [1:1 / grup]", chip4:"Limbi: [de completat]", profileEdit:"Înlocuiește placeholder-ele cu fotografia, numele, bio-ul și formarea reală a facilitatorului înainte de publicare.",
+        ctaLabel:"Următorul pas", ctaTitle:"Ai o temă care pare blocată?", ctaBody:"O conversație scurtă poate clarifica dacă o constelație este o modalitate potrivită de explorare.", ctaButton:"Programează o conversație",
+        discHead:"Notă de responsabilitate.", discBody:" Constelațiile sistemice sunt prezentate aici ca metodă de explorare și reflecție. Nu reprezintă diagnostic, tratament medical sau psihoterapie și nu înlocuiesc sprijinul unui profesionist clinic atunci când acesta este necesar. Cercetarea existentă raportează rezultate promițătoare în anumite contexte, dar baza de dovezi este încă limitată ca volum și calitate.", refsLabel:"Referințe de orientare:"
+      },
+      en: {
+        brand:"Systemic Constellations", navCta:"Discuss a session",
+        heroEyebrow:"No stopwatch. No divided attention.", heroTitle:"One session.<br>One objective.<br>All the way through.", heroLead:"Every client receives complete, undivided 1:1 attention. The session does not stop because 50 or 90 minutes have passed — we continue until the objective set for that meeting is reached, even when that means up to 3 hours.", heroPrimary:"How it works", heroSecondary:"What to expect", fieldNote:"Dedicated 1:1 space<br>for your theme, through to clarity.",
+        whatLabel:"What it is", whatTitle:"A relational map in space.", whatBig:"Instead of analysing only the story, we represent the important elements of the situation: people, teams, choices, goals, obstacles, or parts of your own experience.", whatBody:"Through position, distance, orientation and observable responses, information can emerge about how the system is perceived and organised. The facilitator does not “guess” the truth or predict the future; the process is used for reflection, hypothesis-building and identifying possible movements or choices.",
+        expectLabel:"What to expect", expectTitle:"The clock follows the process — not the other way around.", step1h:"Frame the question", step1p:"We clarify the theme and what would be useful to understand, without requiring your entire story.", step2h:"Build the map", step2p:"We choose the relevant elements and represent them in space using people, objects or markers.", step3h:"Notice the dynamics", step3p:"We explore relationships, tensions, resources and possible leverage points for change.", step4h:"Work through to the objective", step4p:"We do not stop simply because the booked hour is over. The session remains fully 1:1 and can run up to 3 hours so the process can reach the objective set for that session.",
+        forLabel:"Who it is for", forTitle:"When it feels like a piece is missing.", for1:"You are facing an important decision and rational arguments are no longer enough.", for2:"You keep meeting the same pattern in relationships, teams or roles.", for3:"There is tension between belonging, autonomy, responsibility and boundaries.", for4:"You lead a team, company or transition and want to look at the issue as a system.", for5:"You are curious, reflective and willing to try an experiential method without asking it for absolute certainty.",
+        notLabel:"Who it is not for", notTitle:"It is not an oracle and it does not replace clinical care.", not1:"If you want the facilitator to tell you what is “true”, who is right, or what will happen.", not2:"If you are looking for psychological, psychiatric or medical diagnosis.", not3:"If you are in an acute psychological crisis or primarily need specialised clinical support.", not4:"If you only want methods backed by robust, standardised experimental evidence.", not5:"If you are not comfortable exploring experience through space, body, relationship and metaphor.",
+        testLabel:"Participant experience", testTitle:"What clients may say after a session.", q1:"“I came with a problem I had analysed from every angle. Seeing it in space changed the question — and from there, the decision appeared.”", qa1:"Coaching client · leadership", q2:"“I was not given a pre-packaged answer. I noticed something that had always been there, but conversation alone had never made visible.”", qa2:"Founder · entrepreneurship", q3:"“The most useful part was leaving with more clarity and less internal struggle. The next step became simple.”", qa3:"Individual client", demo:"DEMO COPY — replace with a verified testimonial",
+        profileLabel:"Facilitator", profileTitle:"[Facilitator name]", profileBig:"This is where the facilitator’s personal introduction will go — who they are, what brings them to systemic constellations, and the kind of space they aim to create for participants.", profileBody:"Complete this section with the facilitator’s actual systemic-constellations training, relevant professional experience, way of working, and any credentials they wish to display publicly. The final text should not imply any experience or qualification that has not been confirmed.", chip1:"Training: [to complete]", chip2:"Experience: [to complete]", chip3:"Format: [1:1 / group]", chip4:"Languages: [to complete]", profileEdit:"Replace these placeholders with the facilitator’s real photograph, name, bio and training before publishing.",
+        ctaLabel:"Next step", ctaTitle:"Is there a theme that feels stuck?", ctaBody:"A short conversation can clarify whether a constellation is an appropriate way to explore it.", ctaButton:"Schedule a conversation",
+        discHead:"Responsible-use note.", discBody:" Systemic constellations are presented here as a method of exploration and reflection. They are not medical diagnosis, medical treatment or psychotherapy, and they do not replace support from a qualified clinical professional when that is needed. Existing research reports promising outcomes in some contexts, but the evidence base remains limited in quantity and overall quality.", refsLabel:"Orientation references:"
+      }
+    };
+
+    function setLang(lang){
+      document.documentElement.lang = lang;
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (copy[lang][key] !== undefined) el.innerHTML = copy[lang][key];
+      });
+      document.getElementById('roBtn').classList.toggle('active', lang === 'ro');
+      document.getElementById('enBtn').classList.toggle('active', lang === 'en');
+      localStorage.setItem('constellationsLang', lang);
+      document.title = lang === 'ro' ? 'Constelații Sistemice' : 'Systemic Constellations';
+    }
+    document.getElementById('roBtn').addEventListener('click', () => setLang('ro'));
+    document.getElementById('enBtn').addEventListener('click', () => setLang('en'));
+    setLang(localStorage.getItem('constellationsLang') || 'ro');
+  </script>
+</body>
+</html>
