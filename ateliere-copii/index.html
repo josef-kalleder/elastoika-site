@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ateliere de artă pentru copii — ElaStoika</title>
+  <meta name="description" content="Ateliere creative de desen, pictură și expresie prin artă pentru copii, facilitate de Mihaela Adriana Stoika, absolventă UNArte, cu experiență în educație artistică, Montessori și proiecte pentru copii." />
+  <style>
+    :root{
+      --ink:#2a2330;
+      --muted:#716873;
+      --paper:#fffaf3;
+      --paper-2:#f6eee3;
+      --plum:#6d3d63;
+      --berry:#a94f6c;
+      --coral:#e67962;
+      --mustard:#e6b84f;
+      --sage:#8ba88c;
+      --sky:#9ec6d5;
+      --white:#fff;
+      --radius:28px;
+      --shadow:0 18px 50px rgba(52,35,48,.10);
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 4%, rgba(230,184,79,.18), transparent 29rem),
+        radial-gradient(circle at 95% 12%, rgba(158,198,213,.22), transparent 30rem),
+        var(--paper);
+      line-height:1.55;
+    }
+    a{color:inherit}
+    .wrap{width:min(calc(100% - 36px),var(--max));margin:auto}
+    header{
+      position:sticky;top:0;z-index:30;
+      background:rgba(255,250,243,.86);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(42,35,48,.08)
+    }
+    .nav{height:74px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-weight:800;letter-spacing:.02em;text-decoration:none;font-size:1.08rem}
+    .nav-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+    .back{font-size:.92rem;text-decoration:none;color:var(--muted)}
+    .back:hover{text-decoration:underline}
+    .lang{display:flex;padding:4px;background:var(--paper-2);border-radius:999px;gap:2px}
+    .lang button{border:0;background:transparent;border-radius:999px;padding:7px 10px;cursor:pointer;color:var(--muted);font-weight:700}
+    .lang button.active{background:var(--white);color:var(--ink);box-shadow:0 4px 12px rgba(50,30,45,.08)}
+    .hero{padding:72px 0 48px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--berry);margin-bottom:18px}
+    .eyebrow:before{content:"";width:34px;height:3px;border-radius:99px;background:var(--coral)}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(3rem,7vw,6.9rem);line-height:.9;letter-spacing:-.05em;margin:0 0 24px;font-weight:500;max-width:850px}
+    .hero p{font-size:clamp(1.06rem,1.7vw,1.3rem);color:var(--muted);max-width:710px;margin:0 0 28px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 20px;border-radius:999px;text-decoration:none;font-weight:800;border:1px solid transparent;transition:.2s transform,.2s box-shadow,.2s background}
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:var(--ink);color:#fff;box-shadow:0 10px 25px rgba(42,35,48,.18)}
+    .btn.secondary{background:rgba(255,255,255,.7);border-color:rgba(42,35,48,.16)}
+    .art-panel{min-height:560px;position:relative;border-radius:42px;background:#f2e5d4;box-shadow:var(--shadow);overflow:hidden;isolation:isolate}
+    .blob{position:absolute;border-radius:50%;filter:saturate(.96)}
+    .b1{width:420px;height:420px;background:var(--coral);right:-80px;top:-80px}
+    .b2{width:360px;height:360px;background:var(--mustard);left:-110px;bottom:-110px}
+    .b3{width:260px;height:260px;background:var(--sky);left:18%;top:26%}
+    .b4{width:180px;height:180px;background:var(--sage);right:8%;bottom:9%}
+    .stroke{position:absolute;background:#fff;border-radius:999px;transform:rotate(-12deg);opacity:.78}
+    .s1{width:70%;height:23px;left:15%;top:32%}
+    .s2{width:54%;height:18px;left:23%;top:46%;transform:rotate(9deg)}
+    .s3{width:42%;height:16px;left:29%;top:58%;transform:rotate(-4deg)}
+    .panel-card{position:absolute;left:34px;right:34px;bottom:34px;background:rgba(255,255,255,.89);backdrop-filter:blur(10px);border-radius:24px;padding:22px 24px;z-index:3}
+    .panel-card strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:1.6rem;font-weight:500;margin-bottom:5px}
+    .panel-card span{color:var(--muted)}
+    section{padding:86px 0}
+    .section-head{display:grid;grid-template-columns:.7fr 1.3fr;gap:44px;align-items:start;margin-bottom:36px}
+    .kicker{font-size:.78rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--berry);margin-top:7px}
+    h2{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.2rem,4.8vw,4.5rem);line-height:1;letter-spacing:-.035em;margin:0;font-weight:500}
+    .lead{font-size:1.12rem;color:var(--muted);max-width:760px;margin:16px 0 0}
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:rgba(255,255,255,.78);border:1px solid rgba(42,35,48,.08);border-radius:var(--radius);padding:28px;box-shadow:0 10px 30px rgba(42,35,48,.05)}
+    .card .num{font-size:.8rem;font-weight:900;color:var(--berry);letter-spacing:.08em;margin-bottom:34px}
+    .card h3{font-family:Georgia,"Times New Roman",serif;font-size:1.6rem;font-weight:500;margin:0 0 10px}
+    .card p{margin:0;color:var(--muted)}
+    .soft{background:var(--paper-2)}
+    .feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    .feature{border-radius:32px;padding:32px;background:#fff;min-height:245px;position:relative;overflow:hidden}
+    .feature:nth-child(1){background:#f3d9d3}
+    .feature:nth-child(2){background:#e9eddd}
+    .feature:nth-child(3){background:#ddebf0}
+    .feature:nth-child(4){background:#f3e7c5}
+    .feature h3{font-family:Georgia,"Times New Roman",serif;font-size:2rem;font-weight:500;margin:0 0 12px;position:relative;z-index:2}
+    .feature p{max-width:500px;margin:0;color:#5f5760;position:relative;z-index:2}
+    .dot{position:absolute;border-radius:50%;width:140px;height:140px;right:-25px;bottom:-25px;border:18px solid rgba(255,255,255,.45)}
+    .quote{padding:40px;border-radius:36px;background:var(--plum);color:#fff;display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:end}
+    .quote blockquote{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2rem,4vw,4rem);line-height:1.06;margin:0;font-weight:500}
+    .quote p{margin:0;color:rgba(255,255,255,.75)}
+    .about{display:grid;grid-template-columns:.82fr 1.18fr;gap:44px;align-items:stretch}
+    .portrait{min-height:520px;border-radius:38px;background:linear-gradient(145deg,#e6b84f 0 32%,#e67962 32% 63%,#8ba88c 63% 100%);position:relative;overflow:hidden}
+    .portrait:before{content:"FOTO";position:absolute;inset:24px;border:1px dashed rgba(255,255,255,.72);display:grid;place-items:center;border-radius:28px;color:rgba(255,255,255,.9);font-weight:900;letter-spacing:.18em}
+    .about-copy{background:#fff;border-radius:38px;padding:42px;box-shadow:var(--shadow)}
+    .about-copy h2{font-size:clamp(2.5rem,5vw,4.7rem)}
+    .about-copy p{color:var(--muted);font-size:1.04rem}
+    .credentials{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+    .pill{padding:14px 15px;background:var(--paper-2);border-radius:18px;font-size:.92rem}
+    .formats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .format{padding:23px;border-radius:24px;background:#fff;border:1px solid rgba(42,35,48,.08)}
+    .format strong{display:block;margin-bottom:6px}
+    .format span{font-size:.93rem;color:var(--muted)}
+    .note{margin-top:24px;padding:20px 22px;border-left:4px solid var(--sage);background:rgba(139,168,140,.12);border-radius:0 18px 18px 0;color:#5c655b}
+    .cta{padding:88px 0 104px}
+    .cta-box{border-radius:42px;background:var(--ink);color:#fff;padding:48px;display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .cta-box h2{font-size:clamp(2.4rem,5vw,5rem);max-width:760px}
+    .cta-box p{color:rgba(255,255,255,.72);max-width:700px;margin:14px 0 0}
+    .cta-box .btn.primary{background:#fff;color:var(--ink);box-shadow:none;white-space:nowrap}
+    .cta-box .btn.secondary{color:#fff;border-color:rgba(255,255,255,.3);background:transparent;white-space:nowrap}
+    footer{padding:28px 0 40px;color:var(--muted);font-size:.86rem;border-top:1px solid rgba(42,35,48,.08)}
+    .footer-grid{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    [data-lang="en"]{display:none}
+    body.en [data-lang="ro"]{display:none}
+    body.en h1[data-lang="en"], body.en h2[data-lang="en"], body.en h3[data-lang="en"], body.en p[data-lang="en"], body.en div[data-lang="en"], body.en blockquote[data-lang="en"]{display:block}
+    body.en a[data-lang="en"]{display:inline-flex}
+    body.en strong[data-lang="en"], body.en span[data-lang="en"]{display:inline}
+    @media(max-width:920px){
+      .hero-grid,.section-head,.about,.quote{grid-template-columns:1fr}
+      .hero{padding-top:44px}
+      .art-panel{min-height:430px}
+      .cards{grid-template-columns:1fr 1fr}
+      .formats{grid-template-columns:1fr 1fr}
+      .cta-box{align-items:flex-start;flex-direction:column}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(calc(100% - 24px),var(--max))}
+      .nav{height:auto;padding:14px 0;align-items:flex-start}
+      .back{display:none}
+      h1{font-size:clamp(3.35rem,17vw,5.4rem)}
+      .cards,.feature-grid,.formats,.credentials{grid-template-columns:1fr}
+      section{padding:62px 0}
+      .card,.feature,.about-copy,.quote,.cta-box{padding:24px}
+      .portrait{min-height:390px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/">ElaStoika</a>
+      <div class="nav-right">
+        <a class="back" href="/" data-lang="ro">← Înapoi la pagina principală</a>
+        <a class="back" href="/" data-lang="en">← Back to the main page</a>
+        <div class="lang" aria-label="Language switch">
+          <button id="roBtn" class="active" type="button">RO</button>
+          <button id="enBtn" type="button">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow" data-lang="ro">Ateliere pentru copii</div>
+          <div class="eyebrow" data-lang="en">Workshops for children</div>
+          <h1 data-lang="ro">Pictăm viața în culori.</h1>
+          <h1 data-lang="en">We paint life in colour.</h1>
+          <p data-lang="ro">Ateliere de desen, pictură și expresie creativă în care copilul poate explora, experimenta și crea în ritmul său. O abordare caldă, adaptată vârstei și individualității fiecărui copil, cu exerciții inspirate din educația prin artă și art-terapie.</p>
+          <p data-lang="en">Drawing, painting and creative-expression workshops where children can explore, experiment and create at their own pace. A warm, age-adapted approach that respects each child’s individuality, with exercises inspired by art education and art-therapy practices.</p>
+          <div class="actions">
+            <a class="btn primary" href="mailto:e.stoika@yahoo.com?subject=Atelier%20de%20art%C4%83%20pentru%20copii" data-lang="ro">Discută un atelier</a>
+            <a class="btn primary" href="mailto:e.stoika@yahoo.com?subject=Children%27s%20art%20workshop" data-lang="en">Discuss a workshop</a>
+            <a class="btn secondary" href="https://wa.me/40771723858" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <div class="art-panel" aria-label="Abstract colourful art composition">
+          <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="blob b4"></div>
+          <div class="stroke s1"></div><div class="stroke s2"></div><div class="stroke s3"></div>
+          <div class="panel-card">
+            <strong data-lang="ro">Curiozitate · expresie · încredere</strong>
+            <strong data-lang="en">Curiosity · expression · confidence</strong>
+            <span data-lang="ro">Nu urmărim „desenul perfect”. Urmărim bucuria de a descoperi și libertatea de a crea ceva propriu.</span>
+            <span data-lang="en">We are not chasing the “perfect drawing”. We nurture the joy of discovery and the freedom to create something truly one’s own.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker" data-lang="ro">Cum lucrăm</div>
+          <div class="kicker" data-lang="en">How we work</div>
+          <div>
+            <h2 data-lang="ro">Arta ca spațiu de explorare.</h2>
+            <h2 data-lang="en">Art as a space for exploration.</h2>
+            <p class="lead" data-lang="ro">Activitățile sunt construite în jurul culorii, formei, texturii, mișcării și poveștii. Fiecare atelier poate fi adaptat vârstei, nivelului, intereselor și dinamicii grupului.</p>
+            <p class="lead" data-lang="en">Activities are built around colour, form, texture, movement and story. Each workshop can be adapted to age, experience, interests and group dynamics.</p>
+          </div>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="num">01</div><h3 data-lang="ro">Desen & pictură</h3><h3 data-lang="en">Drawing & painting</h3><p data-lang="ro">Exerciții de culoare, compoziție, observație și imaginație, cu tehnici variate și libertate de explorare.</p><p data-lang="en">Colour, composition, observation and imagination exercises using varied techniques and room to explore.</p></article>
+          <article class="card"><div class="num">02</div><h3 data-lang="ro">Artă expresivă</h3><h3 data-lang="en">Expressive art</h3><p data-lang="ro">Activități inspirate din art-terapie, somatic art și explorare vizuală, folosite într-un cadru creativ și educațional.</p><p data-lang="en">Activities inspired by art therapy, somatic art and visual exploration, used in a creative and educational setting.</p></article>
+          <article class="card"><div class="num">03</div><h3 data-lang="ro">Proiecte tematice</h3><h3 data-lang="en">Themed projects</h3><p data-lang="ro">Colaj, arte decorative, texturi, proiecte sezoniere și lucrări care pot crește de la o idee simplă la o mică expoziție.</p><p data-lang="en">Collage, decorative arts, textures, seasonal projects and work that can grow from a simple idea into a small exhibition.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker" data-lang="ro">Ce susținem</div>
+          <div class="kicker" data-lang="en">What we nurture</div>
+          <div>
+            <h2 data-lang="ro">Mai mult decât o lucrare frumoasă.</h2>
+            <h2 data-lang="en">More than a beautiful artwork.</h2>
+            <p class="lead" data-lang="ro">Procesul creativ poate deveni un loc în care copilul își exersează autonomia, curiozitatea, inițiativa și exprimarea personală.</p>
+            <p class="lead" data-lang="en">The creative process can become a place where children practise autonomy, curiosity, initiative and personal expression.</p>
+          </div>
+        </div>
+        <div class="feature-grid">
+          <div class="feature"><h3 data-lang="ro">Libertate de exprimare</h3><h3 data-lang="en">Freedom of expression</h3><p data-lang="ro">Copilul este încurajat să transforme ideea, să aleagă, să experimenteze și să își găsească propria voce vizuală.</p><p data-lang="en">Children are encouraged to transform the idea, choose, experiment and find their own visual voice.</p><div class="dot"></div></div>
+          <div class="feature"><h3 data-lang="ro">Încredere & autonomie</h3><h3 data-lang="en">Confidence & autonomy</h3><p data-lang="ro">Nu există o singură soluție corectă. Accentul cade pe inițiativă, descoperire și satisfacția de a duce o idee până la capăt.</p><p data-lang="en">There is no single correct solution. The emphasis is on initiative, discovery and the satisfaction of carrying an idea through.</p><div class="dot"></div></div>
+          <div class="feature"><h3 data-lang="ro">Ritm individual</h3><h3 data-lang="en">Individual pace</h3><p data-lang="ro">Activitățile pot fi ajustate la particularitățile copilului, fără presiunea comparației și fără a transforma creativitatea într-un test.</p><p data-lang="en">Activities can be adapted to the child’s needs, without the pressure of comparison or turning creativity into a test.</p><div class="dot"></div></div>
+          <div class="feature"><h3 data-lang="ro">Curiozitate & imaginație</h3><h3 data-lang="en">Curiosity & imagination</h3><p data-lang="ro">Culoarea, forma și textura devin puncte de pornire pentru întrebări, povești și moduri noi de a privi lumea.</p><p data-lang="en">Colour, form and texture become starting points for questions, stories and new ways of looking at the world.</p><div class="dot"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="quote">
+          <blockquote data-lang="ro">„Pentru mine, arta este un mod prin care copilul poate descoperi lumea și, în același timp, se poate descoperi pe sine.”</blockquote>
+          <blockquote data-lang="en">“For me, art is a way for a child to discover the world and, at the same time, discover themselves.”</blockquote>
+          <p data-lang="ro">— Mihaela Adriana Stoika</p>
+          <p data-lang="en">— Mihaela Adriana Stoika</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft">
+      <div class="wrap about">
+        <div class="portrait" role="img" aria-label="Facilitator photo placeholder"></div>
+        <div class="about-copy">
+          <div class="kicker" data-lang="ro">Facilitator</div>
+          <div class="kicker" data-lang="en">Facilitator</div>
+          <h2>Mihaela Adriana Stoika</h2>
+          <p data-lang="ro">Artistă și educator creativ, absolventă a Universității Naționale de Arte București, Facultatea de Arte Decorative și Design. Experiența ei cuprinde ateliere independente de artă pentru copii în București și Craiova, activitate ca profesor de artă într-un mediu Montessori și proiecte educaționale, tabere și voluntariat în România și internațional.</p>
+          <p data-lang="en">Artist and creative educator, graduate of the National University of Arts Bucharest, Faculty of Decorative Arts and Design. Her experience includes independent children’s art workshops in Bucharest and Craiova, work as an art teacher in a Montessori environment, and educational, camp and volunteer projects in Romania and internationally.</p>
+          <p data-lang="ro">Formarea relevantă include Art Therapy for Kids, Somatic Art Therapy, Neurographic Art și pregătire pentru lucrul cu copii cu nevoi speciale. Abordarea combină pregătirea artistică, experiența pedagogică și atenția acordată individualității fiecărui copil.</p>
+          <p data-lang="en">Relevant training includes Art Therapy for Kids, Somatic Art Therapy, Neurographic Art and training for working with children with special needs. Her approach combines artistic training, educational experience and close attention to each child’s individuality.</p>
+          <div class="credentials">
+            <div class="pill" data-lang="ro"><strong>UNArte București</strong><br>Arte Decorative & Design · 2018</div>
+            <div class="pill" data-lang="en"><strong>UNArte Bucharest</strong><br>Decorative Arts & Design · 2018</div>
+            <div class="pill" data-lang="ro"><strong>Montessori</strong><br>Profesor de artă · 2021–2023</div>
+            <div class="pill" data-lang="en"><strong>Montessori</strong><br>Art teacher · 2021–2023</div>
+            <div class="pill" data-lang="ro"><strong>Ateliere independente</strong><br>București & Craiova · 2014–2018</div>
+            <div class="pill" data-lang="en"><strong>Independent workshops</strong><br>Bucharest & Craiova · 2014–2018</div>
+            <div class="pill" data-lang="ro"><strong>Proiecte comunitare</strong><br>România & Marea Britanie</div>
+            <div class="pill" data-lang="en"><strong>Community projects</strong><br>Romania & United Kingdom</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="kicker" data-lang="ro">Formate</div>
+          <div class="kicker" data-lang="en">Formats</div>
+          <div>
+            <h2 data-lang="ro">Ateliere construite pentru contextul vostru.</h2>
+            <h2 data-lang="en">Workshops built around your context.</h2>
+            <p class="lead" data-lang="ro">Pentru familii, grupuri mici, after-school, școli, tabere și proiecte comunitare. Tema, durata și materialele se stabilesc în funcție de grup și obiectiv.</p>
+            <p class="lead" data-lang="en">For families, small groups, after-school programmes, schools, camps and community projects. Theme, duration and materials are shaped around the group and purpose.</p>
+          </div>
+        </div>
+        <div class="formats">
+          <div class="format"><strong data-lang="ro">Ateliere de grup</strong><strong data-lang="en">Group workshops</strong><span data-lang="ro">Activități tematice adaptate vârstei și dinamicii grupului.</span><span data-lang="en">Themed activities adapted to age and group dynamics.</span></div>
+          <div class="format"><strong data-lang="ro">Lucru individual</strong><strong data-lang="en">Individual sessions</strong><span data-lang="ro">Spațiu creativ cu atenție 1:1 și exerciții adaptate intereselor copilului.</span><span data-lang="en">A creative 1:1 space with exercises tailored to the child’s interests.</span></div>
+          <div class="format"><strong data-lang="ro">Copii & părinți</strong><strong data-lang="en">Children & parents</strong><span data-lang="ro">Workshopuri creative comune, construite în jurul jocului și colaborării.</span><span data-lang="en">Shared creative workshops built around play and collaboration.</span></div>
+          <div class="format"><strong data-lang="ro">Școli & tabere</strong><strong data-lang="en">Schools & camps</strong><span data-lang="ro">Module creative pentru programe educaționale, evenimente și proiecte speciale.</span><span data-lang="en">Creative modules for educational programmes, events and special projects.</span></div>
+        </div>
+        <div class="note" data-lang="ro"><strong>Notă importantă:</strong> atelierele sunt activități creative și educaționale. Pot integra exerciții inspirate din art-terapie și abordări somatice, dar nu reprezintă psihoterapie, diagnostic sau tratament medical și nu înlocuiesc sprijinul unui specialist clinic atunci când acesta este necesar.</div>
+        <div class="note" data-lang="en"><strong>Important note:</strong> these workshops are creative and educational activities. They may integrate exercises inspired by art therapy and somatic approaches, but they are not psychotherapy, diagnosis or medical treatment, and do not replace clinical support when that is needed.</div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap cta-box">
+        <div>
+          <h2 data-lang="ro">Vrei să construim un atelier pentru copilul sau grupul tău?</h2>
+          <h2 data-lang="en">Would you like to create a workshop for your child or group?</h2>
+          <p data-lang="ro">Scrie câteva rânduri despre vârsta copiilor, numărul de participanți și context. Mihaela poate propune un format și o temă potrivite.</p>
+          <p data-lang="en">Send a few lines about the children’s ages, number of participants and context. Mihaela can suggest a suitable format and theme.</p>
+        </div>
+        <div class="actions">
+          <a class="btn primary" href="mailto:e.stoika@yahoo.com?subject=Atelier%20de%20art%C4%83%20pentru%20copii" data-lang="ro">Scrie-i Mihaelei</a>
+          <a class="btn primary" href="mailto:e.stoika@yahoo.com?subject=Children%27s%20art%20workshop" data-lang="en">Email Mihaela</a>
+          <a class="btn secondary" href="tel:+40771723858">0771 723 858</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <span>© 2026 ElaStoika</span>
+      <span data-lang="ro">Ateliere creative pentru copii · Mihaela Adriana Stoika</span>
+      <span data-lang="en">Creative workshops for children · Mihaela Adriana Stoika</span>
+    </div>
+  </footer>
+
+  <script>
+    const body=document.body, ro=document.getElementById('roBtn'), en=document.getElementById('enBtn');
+    function setLang(lang){
+      const isEn=lang==='en'; body.classList.toggle('en',isEn);
+      ro.classList.toggle('active',!isEn); en.classList.toggle('active',isEn);
+      document.documentElement.lang=lang;
+      localStorage.setItem('elastoika-lang',lang);
+    }
+    ro.addEventListener('click',()=>setLang('ro')); en.addEventListener('click',()=>setLang('en'));
+    setLang(localStorage.getItem('elastoika-lang')==='en'?'en':'ro');
+  </script>
+</body>
+</html>
