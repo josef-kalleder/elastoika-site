@@ -72,10 +72,10 @@
     .offer-line span{font-size:.9rem;color:var(--muted)}
     .hero-actions{display:flex;gap:11px;flex-wrap:wrap}
     .hero-visual{
-      position:relative;min-height:630px;border-radius:36px;overflow:hidden;
+      position:relative;height:clamp(520px,46vw,700px);border-radius:36px;overflow:hidden;
       box-shadow:var(--shadow);border:1px solid rgba(34,49,45,.09);background:#cdb99e
     }
-    .hero-visual img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;display:block}
     .hero-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,45,40,.01),rgba(28,45,40,.16));pointer-events:none}
     .hero-note{
       position:absolute;left:24px;bottom:24px;z-index:2;max-width:280px;padding:15px 17px;
@@ -109,13 +109,9 @@
     .profile{display:grid;grid-template-columns:.72fr 1.28fr;gap:60px;align-items:center}
     .portrait{
       aspect-ratio:4/5;border-radius:180px 180px 24px 24px;border:1px solid var(--line);
-      background:
-        radial-gradient(circle at 50% 34%,rgba(165,91,63,.19),transparent 17%),
-        radial-gradient(circle at 51% 74%,rgba(69,105,93,.19),transparent 28%),
-        linear-gradient(150deg,rgba(255,255,255,.7),rgba(235,227,214,.65));
-      position:relative;overflow:hidden
+      position:relative;overflow:hidden;background:#e8dfd0
     }
-    .portrait:after{content:"ELA STOIKA";position:absolute;bottom:26px;left:0;right:0;text-align:center;letter-spacing:.18em;font-size:.68rem;color:var(--muted)}
+    .portrait img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
     .chips{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0}
     .chip{padding:8px 12px;border:1px solid var(--line);border-radius:999px;font-size:.88rem;background:rgba(255,255,255,.35)}
     .boundaries .panel{max-width:900px;margin:0 auto;background:rgba(255,253,248,.5)}
@@ -137,7 +133,7 @@
 
     @media(max-width:980px){
       .hero,.intro-grid,.profile,.cta{grid-template-columns:1fr}
-      .hero-visual{min-height:500px;order:-1}
+      .hero-visual{height:500px;order:-1}
       .recognition-grid{grid-template-columns:1fr 1fr}
       .process{grid-template-columns:1fr 1fr}
       .nav-actions>.btn{display:none}
@@ -148,7 +144,7 @@
       .launch-strip{font-size:.86rem}
       section{padding:60px 0}
       .hero{gap:30px}
-      .hero-visual{min-height:380px;border-radius:26px}
+      .hero-visual{height:380px;border-radius:26px}
       h1{font-size:3rem}
       .recognition-grid,.split,.process{grid-template-columns:1fr}
       .cta{padding:34px 24px}
@@ -278,16 +274,19 @@
 
     <section id="facilitator">
       <div class="wrap profile">
-        <div class="portrait" aria-label="Ela Stoika"></div>
+        <div class="portrait">
+          <img src="facilitator-photo.jpg" alt="Ela Stoika — înlocuiește această imagine cu fotografia facilitatorului" />
+        </div>
         <div>
           <div class="section-label" data-i18n="profileLabel">Facilitator</div>
           <h2 class="serif">Ela Stoika</h2>
-          <p class="big-copy" data-i18n="profileBig">Ela facilitează sesiuni individuale de constelații sistemice într-un format centrat pe un obiectiv clar, cu atenție completă 1:1 și suficient timp pentru ca procesul să se desfășoare fără presiunea ceasului.</p>
-          <p class="muted" data-i18n="profileBody">Accentul este pe un spațiu privat, atent și structurat, în care situația poate fi privită ca sistem. Detaliile despre formarea și experiența specifică a facilitatorului pot fi adăugate aici atunci când sunt pregătite pentru publicare.</p>
+          <p class="big-copy" data-i18n="profileBig">Artistă, educator creativ și facilitator, Ela Stoika aduce în lucrul 1:1 o combinație de sensibilitate vizuală, atenție la corp și perspectivă sistemică.</p>
+          <p class="muted" data-i18n="profileBody">Este absolventă a Universității Naționale de Arte București și are experiență în facilitarea de workshopuri pentru adulți și familii. Formările sale complementare includ Constelații Sistemice și de Familie, Somatic Art Therapy, Art Therapy și explorarea conștiinței în cadrul Institutului Monroe. Lucrează într-un cadru cald, sigur și atent la ritmul individual, cu accent pe claritate, expresie autentică și respect pentru unicitatea fiecărei persoane.</p>
           <div class="chips">
-            <span class="chip" data-i18n="chip1">Format: 1:1</span>
-            <span class="chip" data-i18n="chip2">Durată: până la 3 ore</span>
-            <span class="chip" data-i18n="chip3">Focus: obiectivul sesiunii</span>
+            <span class="chip" data-i18n="chip1">Constelații Sistemice și de Familie</span>
+            <span class="chip" data-i18n="chip2">Somatic Art Therapy</span>
+            <span class="chip" data-i18n="chip3">Absolventă UNArte București</span>
+            <span class="chip" data-i18n="chip4">Facilitare 1:1 și workshopuri</span>
           </div>
         </div>
       </div>
@@ -375,9 +374,9 @@
         privacyBig:"Pentru mulți oameni, o temă personală are nevoie de spațiu, discreție și timp — nu de o sală plină de observatori.",
         privacyBody:"Formatul individual permite ca ritmul, întrebările și atenția facilitatorului să rămână integral asupra situației tale. Nu trebuie să îți prezinți povestea unui grup și nu concurezi pentru timp cu alți participanți.",
         profileLabel:"Facilitator",
-        profileBig:"Ela facilitează sesiuni individuale de constelații sistemice într-un format centrat pe un obiectiv clar, cu atenție completă 1:1 și suficient timp pentru ca procesul să se desfășoare fără presiunea ceasului.",
-        profileBody:"Accentul este pe un spațiu privat, atent și structurat, în care situația poate fi privită ca sistem. Detaliile despre formarea și experiența specifică a facilitatorului pot fi adăugate aici atunci când sunt pregătite pentru publicare.",
-        chip1:"Format: 1:1",chip2:"Durată: până la 3 ore",chip3:"Focus: obiectivul sesiunii",
+        profileBig:"Artistă, educator creativ și facilitator, Ela Stoika aduce în lucrul 1:1 o combinație de sensibilitate vizuală, atenție la corp și perspectivă sistemică.",
+        profileBody:"Este absolventă a Universității Naționale de Arte București și are experiență în facilitarea de workshopuri pentru adulți și familii. Formările sale complementare includ Constelații Sistemice și de Familie, Somatic Art Therapy, Art Therapy și explorarea conștiinței în cadrul Institutului Monroe. Lucrează într-un cadru cald, sigur și atent la ritmul individual, cu accent pe claritate, expresie autentică și respect pentru unicitatea fiecărei persoane.",
+        chip1:"Constelații Sistemice și de Familie",chip2:"Somatic Art Therapy",chip3:"Absolventă UNArte București",chip4:"Facilitare 1:1 și workshopuri",
         notLabel:"Când nu este formatul potrivit",notTitle:"Nu este un oracol și nu înlocuiește îngrijirea clinică.",
         not1:"Dacă îți dorești ca facilitatorul să îți spună ce este „adevărat”, cine are dreptate sau ce se va întâmpla.",
         not2:"Dacă vrei o diagnosticare psihologică, psihiatrică sau medicală.",
@@ -425,9 +424,9 @@
         privacyBig:"For many people, a personal theme needs space, discretion and time — not a room full of observers.",
         privacyBody:"The private format lets the pace, questions and facilitator’s attention remain entirely on your situation. You do not have to present your story to a group or compete with other participants for time.",
         profileLabel:"Facilitator",
-        profileBig:"Ela facilitates private systemic constellation sessions centered on a clear objective, with complete 1:1 attention and enough time for the process to unfold without pressure from the clock.",
-        profileBody:"The emphasis is on a private, attentive and structured space where the situation can be viewed as a system. Details about the facilitator’s specific training and experience can be added here when they are ready for publication.",
-        chip1:"Format: 1:1",chip2:"Duration: up to 3 hours",chip3:"Focus: the session objective",
+        profileBig:"An artist, creative educator and facilitator, Ela Stoika brings together visual sensitivity, body awareness and a systemic perspective in her 1:1 work.",
+        profileBody:"She is a graduate of the National University of Arts Bucharest and has experience facilitating workshops for adults and families. Her complementary training includes Systemic and Family Constellations, Somatic Art Therapy, Art Therapy and consciousness exploration through the Monroe Institute. Her approach is warm, safe and attentive to each person’s pace, with an emphasis on clarity, authentic expression and respect for individual uniqueness.",
+        chip1:"Systemic & Family Constellations",chip2:"Somatic Art Therapy",chip3:"UNArte Bucharest graduate",chip4:"1:1 & workshop facilitation",
         notLabel:"When this is not the right format",notTitle:"It is not an oracle and it does not replace clinical care.",
         not1:"If you want the facilitator to tell you what is “true”, who is right, or what will happen.",
         not2:"If you are looking for psychological, psychiatric or medical diagnosis.",
